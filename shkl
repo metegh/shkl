@@ -1348,6 +1348,75 @@ end)
 
 Options.MyToggle:SetValue(false)
 
+----//////////////////////////// Only for hahaha - Every time critical hit
+
+-- Создаем элементы интерфейса
+local Toggle = Tabs.Main:AddToggle("HitToggle", {
+    Title = "Auto Hit + critical",
+    Default = false
+})
+
+local Dropdown = Tabs.Main:AddDropdown("PlayerDropdown", {
+    Title = "Player for slap",
+    Values = {},
+    Multi = false,
+    Default = nil
+})
+
+-- Функция для обновления списка игроков
+local function updatePlayerList()
+    local players = {}
+    for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
+        if player ~= game.Players.LocalPlayer then
+            table.insert(players, player.Name)
+        end
+    end
+    Dropdown:SetValues(players)
+    if #players > 0 then
+        Dropdown:SetValue(players[1])
+    end
+end
+
+-- Инициализация списка игроков
+updatePlayerList()
+game:GetService("Players").PlayerAdded:Connect(updatePlayerList)
+game:GetService("Players").PlayerRemoving:Connect(updatePlayerList)
+
+-- Основная логика
+local hitLoop
+Toggle:OnChanged(function(state)
+    if state then
+        hitLoop = coroutine.wrap(function()
+            while Options.HitToggle.Value do
+                local selectedPlayer = Options.PlayerDropdown.Value
+                if selectedPlayer then
+                    local player = game:GetService("Players"):FindFirstChild(selectedPlayer)
+                    if player and player.Character then
+                        local head = player.Character:FindFirstChild("Head")
+                        if head then
+                            local args = {head, true}
+                            game:GetService("ReplicatedStorage"):WaitForChild("GeneralHit"):FireServer(unpack(args))
+                        end
+                    end
+                end
+                task.wait(0.5)
+            end
+        end)()
+    else
+        if hitLoop then
+            coroutine.close(hitLoop)
+            hitLoop = nil
+        end
+    end
+    print("Toggle changed:", state)
+end)
+
+-- Инициализация Options
+if not Options then Options = {} end
+Options.HitToggle = {Value = false}
+Options.PlayerDropdown = {Value = nil}
+Options.HitToggle:SetValue(false)
+
 ------/////////////////////////////////////////////////////////
 
 Tabs.Mstr:AddParagraph({
@@ -1355,56 +1424,56 @@ Tabs.Mstr:AddParagraph({
     Content = "Bus Mastery features"  -- Можно оставить пустым, если не нужно
 })
 
-local Toggle = Tabs.Main:AddToggle("BusTeleportToggle", {
-    Title = "Teleport To Bus",
-    Default = false
-})
+-- local Toggle = Tabs.Main:AddToggle("BusTeleportToggle", {
+--     Title = "Teleport To Bus",
+--     Default = false
+-- })
 
-local function findBusModel()
-    -- Сначала проверяем обычные места
-    local bus = workspace:FindFirstChild("BusModel") or game:GetService("ReplicatedStorage"):FindFirstChild("BusModel")
+-- local function findBusModel()
+--     -- Сначала проверяем обычные места
+--     local bus = workspace:FindFirstChild("BusModel") or game:GetService("ReplicatedStorage"):FindFirstChild("BusModel")
     
-    -- Если не нашли, проверяем nil-хранилище
-    if not bus then
-        for _, instance in ipairs(getnilinstances()) do
-            if instance.Name == "BusModel" and instance:IsA("MeshPart") then
-                bus = instance
-                break
-            end
-        end
-    end
+--     -- Если не нашли, проверяем nil-хранилище
+--     if not bus then
+--         for _, instance in ipairs(getnilinstances()) do
+--             if instance.Name == "BusModel" and instance:IsA("MeshPart") then
+--                 bus = instance
+--                 break
+--             end
+--         end
+--     end
     
-    return bus
-end
+--     return bus
+-- end
 
-Toggle:OnChanged(function(state)
-    if state then
-        local character = game.Players.LocalPlayer.Character
-        local humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
+-- Toggle:OnChanged(function(state)
+--     if state then
+--         local character = game.Players.LocalPlayer.Character
+--         local humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
         
-        if humanoidRootPart then
-            local bus = findBusModel()
+--         if humanoidRootPart then
+--             local bus = findBusModel()
             
-            if bus then
-                -- Телепортируем к автобусу с небольшим смещением, чтобы не застрять внутри
-                humanoidRootPart.CFrame = bus.CFrame * CFrame.new(0, 3, 0)
-                print("Телепортирован к BusModel")
-            else
-                warn("BusModel не найден!")
-                Toggle:SetValue(false) -- Автоматически выключаем, если автобус не найден
-            end
-        else
-            warn("Персонаж не готов для телепортации!")
-            Toggle:SetValue(false)
-        end
-    end
-    print("Состояние переключателя:", state)
-end)
+--             if bus then
+--                 -- Телепортируем к автобусу с небольшим смещением, чтобы не застрять внутри
+--                 humanoidRootPart.CFrame = bus.CFrame * CFrame.new(0, 3, 0)
+--                 print("Телепортирован к BusModel")
+--             else
+--                 warn("BusModel не найден!")
+--                 Toggle:SetValue(false) -- Автоматически выключаем, если автобус не найден
+--             end
+--         else
+--             warn("Персонаж не готов для телепортации!")
+--             Toggle:SetValue(false)
+--         end
+--     end
+--     print("Состояние переключателя:", state)
+-- end)
 
--- Инициализация Options (если требуется)
-if not Options then Options = {} end
-Options.BusTeleportToggle = {Value = false}
-Options.BusTeleportToggle:SetValue(false)
+-- -- Инициализация Options (если требуется)
+-- if not Options then Options = {} end
+-- Options.BusTeleportToggle = {Value = false}
+-- Options.BusTeleportToggle:SetValue(false)
 
 
 
