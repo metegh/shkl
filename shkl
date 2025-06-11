@@ -1367,6 +1367,40 @@ Options.MyToggle:SetValue(false)
 
 ---////////////ROB MASTERY HELPER
 
+local RobToggle = Tabs.Main:AddToggle("AutoRobToggle", {
+    Title = "Auto Rob (Every 5s)",
+    Default = false
+})
+
+local robbing = false
+local robThread = nil
+
+local function robPlayer()
+    local args = {false}
+    game:GetService("ReplicatedStorage"):WaitForChild("rob"):FireServer(unpack(args))
+end
+
+RobToggle:OnChanged(function(value)
+    if value then
+        robbing = true
+        robThread = task.spawn(function()
+            while robbing do
+                robPlayer()
+                task.wait(5) -- Ждем 5 секунд перед следующим вызовом
+            end
+        end)
+    else
+        robbing = false
+        if robThread then
+            task.cancel(robThread)
+            robThread = nil
+        end
+    end
+end)
+
+-- Дополнительно: вызываем сразу при включении, а не ждем 5 секунд
+Options.AutoRobToggle:SetValue(false)
+
 -- Создаем Dropdown со списком игроков
 local playerNames = {}
 for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
@@ -1376,19 +1410,19 @@ for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
 end
 
 local PlayerDropdown = Tabs.Mstr:AddDropdown("PlayerDropdown", {
-    Title = "Выберите игрока",
+    Title = "Select Player",
     Values = playerNames,
     Multi = false,
     Default = 1,
 })
 
 PlayerDropdown:OnChanged(function(Value)
-    print("Выбран игрок:", Value)
+    print("Your player:", Value)
 end)
 
 -- Создаем переключатель для телепортации к игроку
 local TeleportToggle = Tabs.Mstr:AddToggle("TeleportToggle", {
-    Title = "Телепортироваться к игроку",
+    Title = "Teleport To Rob",
     Default = false
 })
 
