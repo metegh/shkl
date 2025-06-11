@@ -1358,13 +1358,13 @@ local Dropdown = Tabs.Mstr:AddDropdown("PlayerDropdown", {
     Default = nil
 })
 
--- Переключатель для атаки головы
+-- Переключатель для критических ударов (голова)
 local HeadToggle = Tabs.Mstr:AddToggle("HeadHitToggle", {
     Title = "Auto Critical Slap *semi-legit*",
     Default = false
 })
 
--- Переключатель для атаки туловища
+-- Переключатель для обычных ударов (туловище)
 local TorsoToggle = Tabs.Mstr:AddToggle("TorsoHitToggle", {
     Title = "Auto-Slap Player *semi-legit*",
     Default = false
@@ -1389,36 +1389,64 @@ updatePlayerList()
 game:GetService("Players").PlayerAdded:Connect(updatePlayerList)
 game:GetService("Players").PlayerRemoving:Connect(updatePlayerList)
 
--- Улучшенная функция атаки с проверкой нескольких частей
+-- Улучшенная функция для атаки
 local function attackPlayer(partNames)
     local selectedPlayer = Dropdown.Value
-    if selectedPlayer then
-        local player = game:GetService("Players"):FindFirstChild(selectedPlayer)
-        if player and player.Character then
-            for _, partName in ipairs(partNames) do
-                local part = player.Character:FindFirstChild(partName)
-                if part then
-                    local args = {part, true}
-                    game:GetService("ReplicatedStorage"):WaitForChild("GeneralHit"):FireServer(unpack(args))
-                    return true -- Успешная атака
-                end
-            end
+    if not selectedPlayer then return false end
+    
+    local player = game:GetService("Players"):FindFirstChild(selectedPlayer)
+    if not player or not player.Character then return false end
+    
+    local character = player.Character
+    local humanoid = character:FindFirstChildOfClass("Humanoid")
+    if not humanoid or humanoid.Health <= 0 then return false end
+    
+    -- Проверяем все указанные части тела
+    local parts = {}
+    for _, partName in ipairs(type(partNames) == "table" and partNames or {partNames}) do
+        local part = character:FindFirstChild(partName)
+        if part then
+            table.insert(parts, part)
         end
     end
-    return false -- Ни один из частей не найден или не атакован
+    
+    if #parts == 0 then return false end
+    
+    -- Выбираем случайную часть из доступных
+    local targetPart = parts[math.random(1, #parts)]
+    local hitEvent = game:GetService("ReplicatedStorage"):FindFirstChild("GeneralHit")
+    
+    if not hitEvent then
+        warn("GeneralHit не найден в ReplicatedStorage!")
+        return false
+    end
+    
+    -- Добавляем небольшую случайную задержку для "semi-legit"
+    task.wait(math.random(0.1, 0.3))
+    
+    local args = {targetPart, true}
+    local success, err = pcall(function()
+        hitEvent:FireServer(unpack(args))
+    end)
+    
+    if not success then
+        warn("Ошибка при атаке:", err)
+        return false
+    end
+    
+    return true
 end
 
--- Логика для атаки головы (Head или UpperTorso)
+-- Логика для критических ударов (голова)
 local headLoop
 HeadToggle:OnChanged(function(state)
     if state then
         headLoop = task.spawn(function()
             while HeadToggle.Value do
-                local success = attackPlayer({"Head", "UpperTorso"})
-                if not success then
-                    warn("Не удалось атаковать голову или верхнюю часть туловища!")
+                if not attackPlayer({"Head", "UpperTorso"}) then
+                    warn("Не удалось выполнить критический удар!")
                 end
-                task.wait(0.5)
+                task.wait(math.random(0.4, 0.8)) -- Случайный интервал
             end
         end)
     elseif headLoop then
@@ -1427,17 +1455,16 @@ HeadToggle:OnChanged(function(state)
     end
 end)
 
--- Логика для атаки туловища (Torso, UpperTorso, LowerTorso, HumanoidRootPart)
+-- Логика для обычных ударов (туловище)
 local torsoLoop
 TorsoToggle:OnChanged(function(state)
     if state then
         torsoLoop = task.spawn(function()
             while TorsoToggle.Value do
-                local success = attackPlayer({"Torso", "UpperTorso", "LowerTorso", "HumanoidRootPart"})
-                if not success then
-                    warn("Не удалось атаковать туловище!")
+                if not attackPlayer({"Torso", "UpperTorso", "LowerTorso"}) then
+                    warn("Не удалось выполнить обычный удар!")
                 end
-                task.wait(0.5)
+                task.wait(math.random(0.3, 0.6)) -- Случайный интервал
             end
         end)
     elseif torsoLoop then
@@ -1458,7 +1485,6 @@ TorsoToggle:OnChanged(function(state)
         HeadToggle:SetValue(false)
     end
 end)
-
 
 ------/////////////////////////////////////////////////////////
 
