@@ -1367,7 +1367,7 @@ Options.MyToggle:SetValue(false)
 
 ---////////////ROB MASTERY HELPER
 
-local RobToggle = Tabs.Main:AddToggle("AutoRobToggle", {
+local RobToggle = Tabs.Mstr:AddToggle("AutoRobToggle", {
     Title = "Auto Rob (Every 5s)",
     Default = false
 })
