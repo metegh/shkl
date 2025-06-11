@@ -1352,12 +1352,12 @@ Options.MyToggle:SetValue(false)
 
 -- Создаем элементы интерфейса
 local Toggle = Tabs.Main:AddToggle("HitToggle", {
-    Title = "Auto Hit + critical",
+    Title = "Авто-хит игрока",
     Default = false
 })
 
 local Dropdown = Tabs.Main:AddDropdown("PlayerDropdown", {
-    Title = "Player for slap",
+    Title = "Выберите игрока",
     Values = {},
     Multi = false,
     Default = nil
@@ -1372,7 +1372,7 @@ local function updatePlayerList()
         end
     end
     Dropdown:SetValues(players)
-    if #players > 0 then
+    if #players > 0 and not Dropdown.Value then
         Dropdown:SetValue(players[1])
     end
 end
@@ -1386,9 +1386,9 @@ game:GetService("Players").PlayerRemoving:Connect(updatePlayerList)
 local hitLoop
 Toggle:OnChanged(function(state)
     if state then
-        hitLoop = coroutine.wrap(function()
-            while Options.HitToggle.Value do
-                local selectedPlayer = Options.PlayerDropdown.Value
+        hitLoop = task.spawn(function()
+            while Toggle.Value do
+                local selectedPlayer = Dropdown.Value
                 if selectedPlayer then
                     local player = game:GetService("Players"):FindFirstChild(selectedPlayer)
                     if player and player.Character then
@@ -1401,21 +1401,15 @@ Toggle:OnChanged(function(state)
                 end
                 task.wait(0.5)
             end
-        end)()
-    else
-        if hitLoop then
-            coroutine.close(hitLoop)
-            hitLoop = nil
-        end
+        end)
+    elseif hitLoop then
+        task.cancel(hitLoop)
+        hitLoop = nil
     end
     print("Toggle changed:", state)
 end)
 
--- Инициализация Options
-if not Options then Options = {} end
-Options.HitToggle = {Value = false}
-Options.PlayerDropdown = {Value = nil}
-Options.HitToggle:SetValue(false)
+-- Инициализация (для Fluent Options не требуется)
 
 ------/////////////////////////////////////////////////////////
 
