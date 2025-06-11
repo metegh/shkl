@@ -32,11 +32,11 @@ local Tabs = {
     Badgs = Window:AddTab({ Title = "Badges", Icon = "album" }),
     BobBoss = Window:AddTab({ Title = "Bob Boss", Icon = "axe" }),
     Ant = Window:AddTab({ Title = "Antis", Icon = "shield" }),
-    Vsl = Window:AddTab({ Title = "Visual", Icon = "candy" }),
+    --Vsl = Window:AddTab({ Title = "Visual", Icon = "candy" }),
    -- Hlw = Window:AddTab({ Title = "Halloween", Icon = "box" }),
     Msc = Window:AddTab({ Title = "Misc", Icon = "align-justify" }),
     Mjr = Window:AddTab({ Title = "Major Features", Icon = "box"}),
-    Mstr = Window:AddTab({ Title = "Mastery", Icon = "bolt"}),
+    Mstr = Window:AddTab({ Title = "Mastery", Icon = "bomb"}),
 	Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 
@@ -1347,6 +1347,64 @@ Toggle:OnChanged(function(State)
 end)
 
 Options.MyToggle:SetValue(false)
+
+------/////////////////////////////////////////////////////////
+
+Tabs.Mstr:AddParagraph({
+    Title = "Bus mastery",
+    Content = "Bus Mastery features"  -- Можно оставить пустым, если не нужно
+})
+
+local Toggle = Tabs.Main:AddToggle("BusTeleportToggle", {
+    Title = "Teleport To Bus",
+    Default = false
+})
+
+local function findBusModel()
+    -- Сначала проверяем обычные места
+    local bus = workspace:FindFirstChild("BusModel") or game:GetService("ReplicatedStorage"):FindFirstChild("BusModel")
+    
+    -- Если не нашли, проверяем nil-хранилище
+    if not bus then
+        for _, instance in ipairs(getnilinstances()) do
+            if instance.Name == "BusModel" and instance:IsA("MeshPart") then
+                bus = instance
+                break
+            end
+        end
+    end
+    
+    return bus
+end
+
+Toggle:OnChanged(function(state)
+    if state then
+        local character = game.Players.LocalPlayer.Character
+        local humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
+        
+        if humanoidRootPart then
+            local bus = findBusModel()
+            
+            if bus then
+                -- Телепортируем к автобусу с небольшим смещением, чтобы не застрять внутри
+                humanoidRootPart.CFrame = bus.CFrame * CFrame.new(0, 3, 0)
+                print("Телепортирован к BusModel")
+            else
+                warn("BusModel не найден!")
+                Toggle:SetValue(false) -- Автоматически выключаем, если автобус не найден
+            end
+        else
+            warn("Персонаж не готов для телепортации!")
+            Toggle:SetValue(false)
+        end
+    end
+    print("Состояние переключателя:", state)
+end)
+
+-- Инициализация Options (если требуется)
+if not Options then Options = {} end
+Options.BusTeleportToggle = {Value = false}
+Options.BusTeleportToggle:SetValue(false)
 
 
 
