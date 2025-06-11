@@ -1422,7 +1422,7 @@ end)
 
 -- Создаем переключатель для циклической телепортации
 local TeleportToggle = Tabs.Mstr:AddToggle("TeleportToggle", {
-    Title = "Teleport To Rob Player",
+    Title = "Teleport To Rob Player 8",
     Default = false
 })
 
