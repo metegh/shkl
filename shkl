@@ -1310,11 +1310,11 @@ Tabs.Main:AddButton({
 
 -- Добавляем Paragraph (правильный метод)
 Tabs.Mstr:AddParagraph({
-    Title = "Slap Battles Game",
-    Content = "Управление прокачкой перчаток"  -- Можно оставить пустым, если не нужно
+    Title = "Glovel Mastery",
+    Content = "1st Glovel Mastery features"  -- Можно оставить пустым, если не нужно
 })
 
-local Toggle = Tabs.Mstr:CreateToggle("MyToggle", {Title = "Fast *DIG* quest", Default = false })
+local Toggle = Tabs.Mstr:AddToggle("MyToggle", {Title = "Fast *DIG* quest", Default = false })
 
 local isRunning = false 
 
