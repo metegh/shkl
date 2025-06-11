@@ -1308,10 +1308,10 @@ Tabs.Main:AddButton({
 
 ---------------------------------------------------------------------- ////////////// MASTERY
 
-		Tabs.Mstr:AddParagraph({
-			Title = "Slap Battles Game",
-			Content = ""
-		})
+Tabs.Mstr:AddLabel({
+    Text = "Glove Mastery",
+    Description = "Glovel mastery functions"
+})
 
 local Toggle = Tabs.Mstr:CreateToggle("MyToggle", {Title = "Fast *DIG* quest", Default = false })
 
