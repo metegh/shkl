@@ -1351,16 +1351,23 @@ Options.MyToggle:SetValue(false)
 ----//////////////////////////// Only for hahaha - Every time critical hit
 
 -- Создаем элементы интерфейса
-local Toggle = Tabs.Main:AddToggle("HitToggle", {
-    Title = "Авто-хит игрока",
-    Default = false
-})
-
-local Dropdown = Tabs.Main:AddDropdown("PlayerDropdown", {
-    Title = "Выберите игрока",
+local Dropdown = Tabs.Mstr:AddDropdown("PlayerDropdown", {
+    Title = "Select Playere",
     Values = {},
     Multi = false,
     Default = nil
+})
+
+-- Переключатель для атаки головы
+local HeadToggle = Tabs.Mstr:AddToggle("HeadHitToggle", {
+    Title = "Auto Critical Slap *semi-legit*",
+    Default = false
+})
+
+-- Переключатель для атаки туловища
+local TorsoToggle = Tabs.Mstr:AddToggle("TorsoHitToggle", {
+    Title = "Auto-Slap Player *semi-legit*",
+    Default = false
 })
 
 -- Функция для обновления списка игроков
@@ -1382,34 +1389,71 @@ updatePlayerList()
 game:GetService("Players").PlayerAdded:Connect(updatePlayerList)
 game:GetService("Players").PlayerRemoving:Connect(updatePlayerList)
 
--- Основная логика
-local hitLoop
-Toggle:OnChanged(function(state)
+-- Общая функция для атаки
+local function attackPlayer(partName)
+    local selectedPlayer = Dropdown.Value
+    if selectedPlayer then
+        local player = game:GetService("Players"):FindFirstChild(selectedPlayer)
+        if player and player.Character then
+            local part = player.Character:FindFirstChild(partName)
+            if part then
+                local args = {part, true}
+                game:GetService("ReplicatedStorage"):WaitForChild("GeneralHit"):FireServer(unpack(args))
+                return true
+            end
+        end
+    end
+    return false
+end
+
+-- Логика для атаки головы
+local headLoop
+HeadToggle:OnChanged(function(state)
     if state then
-        hitLoop = task.spawn(function()
-            while Toggle.Value do
-                local selectedPlayer = Dropdown.Value
-                if selectedPlayer then
-                    local player = game:GetService("Players"):FindFirstChild(selectedPlayer)
-                    if player and player.Character then
-                        local head = player.Character:FindFirstChild("Head")
-                        if head then
-                            local args = {head, true}
-                            game:GetService("ReplicatedStorage"):WaitForChild("GeneralHit"):FireServer(unpack(args))
-                        end
-                    end
+        headLoop = task.spawn(function()
+            while HeadToggle.Value do
+                if not attackPlayer("Head") then
+                    warn("Не удалось атаковать голову!")
                 end
                 task.wait(0.5)
             end
         end)
-    elseif hitLoop then
-        task.cancel(hitLoop)
-        hitLoop = nil
+    elseif headLoop then
+        task.cancel(headLoop)
+        headLoop = nil
     end
-    print("Toggle changed:", state)
 end)
 
--- Инициализация (для Fluent Options не требуется)
+-- Логика для атаки туловища
+local torsoLoop
+TorsoToggle:OnChanged(function(state)
+    if state then
+        torsoLoop = task.spawn(function()
+            while TorsoToggle.Value do
+                if not attackPlayer("Torso") or not attackPlayer("UpperTorso") then
+                    warn("Не удалось атаковать туловище!")
+                end
+                task.wait(0.5)
+            end
+        end)
+    elseif torsoLoop then
+        task.cancel(torsoLoop)
+        torsoLoop = nil
+    end
+end)
+
+-- Взаимное исключение переключателей
+HeadToggle:OnChanged(function(state)
+    if state and TorsoToggle.Value then
+        TorsoToggle:SetValue(false)
+    end
+end)
+
+TorsoToggle:OnChanged(function(state)
+    if state and HeadToggle.Value then
+        HeadToggle:SetValue(false)
+    end
+end)
 
 ------/////////////////////////////////////////////////////////
 
