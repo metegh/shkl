@@ -1328,10 +1328,10 @@ do
 
     Tabs.Mstr:AddParagraph({
         Title = "Rob mastery",
-        Content = "Rob Mastery features"  -- Можно оставить пустым, если не нужно
+        Content = "Rob Mastery features. Rob *1* stud SEMI-RAGE"  -- Можно оставить пустым, если не нужно
     })
 
-    local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Auto Rob", Default = false })
+    local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "1 Rob Stud Quest", Default = false })
 
 local function teleportAndRob()
     -- Телепортация
@@ -1351,7 +1351,7 @@ Toggle:OnChanged(function(value)
         loopThread = task.spawn(function()
             while running do
                 teleportAndRob()
-                task.wait(16) -- Ждем 16 секунд перед повторением
+                task.wait(14.5) -- Ждем 16 секунд перед повторением
             end
         end)
     else
@@ -1364,6 +1364,84 @@ Toggle:OnChanged(function(value)
 end)
 
 Options.MyToggle:SetValue(false)
+
+---////////////ROB MASTERY HELPER
+
+-- Создаем Dropdown со списком игроков
+local playerNames = {}
+for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
+    if player ~= game.Players.LocalPlayer then
+        table.insert(playerNames, player.Name)
+    end
+end
+
+local PlayerDropdown = Tabs.Mstr:AddDropdown("PlayerDropdown", {
+    Title = "Select Player",
+    Values = playerNames,
+    Multi = false,
+    Default = 1,
+})
+
+PlayerDropdown:OnChanged(function(Value)
+    print("player: ", Value)
+end)
+
+-- Создаем переключатель для телепортации к игроку
+local TeleportToggle = Tabs.Main:AddToggle("TeleportToggle", {
+    Title = "Teleport To Rob",
+    Default = false
+})
+
+local teleporting = false
+local teleportThread = nil
+
+local function teleportToPlayer(playerName)
+    local targetPlayer = game:GetService("Players"):FindFirstChild(playerName)
+    if targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame
+    end
+end
+
+TeleportToggle:OnChanged(function(value)
+    if value then
+        local selectedPlayer = Options.PlayerDropdown.Value
+        if not selectedPlayer or selectedPlayer == "" then
+            warn("Не выбран игрок для телепортации!")
+            Options.TeleportToggle:SetValue(false)
+            return
+        end
+        
+        teleporting = true
+        teleportThread = task.spawn(function()
+            while teleporting do
+                teleportToPlayer(selectedPlayer)
+                task.wait(5) -- Ждем 5 секунд перед следующей телепортацией
+            end
+        end)
+    else
+        teleporting = false
+        if teleportThread then
+            task.cancel(teleportThread)
+            teleportThread = nil
+        end
+    end
+end)
+
+-- Обновляем список игроков при подключении/отключении игроков
+game:GetService("Players").PlayerAdded:Connect(function(player)
+    table.insert(playerNames, player.Name)
+    PlayerDropdown:SetValues(playerNames)
+end)
+
+game:GetService("Players").PlayerRemoving:Connect(function(player)
+    for i, name in ipairs(playerNames) do
+        if name == player.Name then
+            table.remove(playerNames, i)
+            break
+        end
+    end
+    PlayerDropdown:SetValues(playerNames)
+end)
 
 ------/////////////////////////////////////////////////////////
     Tabs.Mstr:AddParagraph({
