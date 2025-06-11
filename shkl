@@ -1,10 +1,13 @@
+-- ts file was generated at discord.gg/25ms
+
+
 local safeport = Instance.new("Part", workspace)
 safeport.Name = "SafePort15"
 safeport.Size = Vector3.new(200, 10, 200) 
 safeport.Transparency = 0.5 
 safeport.CanCollide = true
 safeport.Anchored = true
-safeport.CFrame = CFrame.new(2457.6001, 229.365677, -4558.22363, -0.999834299, 0.000101457415, 0.0182033889, 3.8126462e-08, 0.999984503, -0.00557136489, -0.018203672, -0.00557044102, -0.999818802)
+safeport.CFrame = CFrame.new(2457.6001, 229.365677, - 4558.22363, - 0.999834299, 0.000101457415, 0.0182033889, 3.8126462e-08, 0.999984503, - 0.00557136489, - 0.018203672, - 0.00557044102, - 0.999818802)
 local decal = Instance.new("Decal", safeport)
 decal.Face = "Top"
 
@@ -13,109 +16,122 @@ local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/d
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 
 local Window = Fluent:CreateWindow({
-	Title = "Rebellion " .. Fluent.Version,
-	SubTitle = "Slap Battles.1",
-	TabWidth = 160,
-	Size = UDim2.fromOffset(580, 460),
-	Acrylic = false, -- The blur may be detectable, setting this to false disables blur entirely
-	Theme = "Dark",
-	MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
+    Title = "Rebellion " .. Fluent.Version,
+    SubTitle = "Slap Battles.1",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(580, 460),
+    Acrylic = false, -- The blur may be detectable, setting this to false disables blur entirely
+    Theme = "Dark",
+    MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
 })
 
 --Fluent provides Lucide Icons https://lucide.dev/icons/ for the tabs, icons are optional
 local Tabs = {
-	Main = Window:AddTab({ Title = "Slap Battles", Icon = "menu" }),
-	Telp = Window:AddTab({ Title = "Teleport", Icon = "wand" }),
-    SlpRyl = Window:AddTab({ Title = "Slap Royale", Icon = "crown" }),
-    AvBmst = Window:AddTab({ Title = "Avatar basement", Icon = "briefcase" }),
-	Guide = Window:AddTab({ Title = "Guide Boss", Icon = "award" }),
-    Badgs = Window:AddTab({ Title = "Badges", Icon = "album" }),
-    BobBoss = Window:AddTab({ Title = "Bob Boss", Icon = "axe" }),
-    Ant = Window:AddTab({ Title = "Antis", Icon = "shield" }),
+    Main = Window:AddTab({
+        Title = "Slap Battles",
+        Icon = "menu"
+    }),
+    Telp = Window:AddTab({
+        Title = "Teleport",
+        Icon = "wand"
+    }),
+    SlpRyl = Window:AddTab({
+        Title = "Slap Royale",
+        Icon = "crown"
+    }),
+    AvBmst = Window:AddTab({
+        Title = "Avatar basement",
+        Icon = "briefcase"
+    }),
+    Guide = Window:AddTab({
+        Title = "Guide Boss",
+        Icon = "award"
+    }),
+    Badgs = Window:AddTab({
+        Title = "Badges",
+        Icon = "album"
+    }),
+    BobBoss = Window:AddTab({
+        Title = "Bob Boss",
+        Icon = "axe"
+    }),
+    Ant = Window:AddTab({
+        Title = "Antis",
+        Icon = "shield"
+    }),
     --Vsl = Window:AddTab({ Title = "Visual", Icon = "candy" }),
    -- Hlw = Window:AddTab({ Title = "Halloween", Icon = "box" }),
-    Msc = Window:AddTab({ Title = "Misc", Icon = "align-justify" }),
-    Mjr = Window:AddTab({ Title = "Major Features", Icon = "box"}),
-    Mstr = Window:AddTab({ Title = "Mastery", Icon = "bomb"}),
-	Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
+    Msc = Window:AddTab({
+        Title = "Misc",
+        Icon = "align-justify"
+    }),
+    Mjr = Window:AddTab({
+        Title = "Major Features",
+        Icon = "box"
+    }),
+    Mstr = Window:AddTab({
+        Title = "Mastery",
+        Icon = "bomb"
+    }),
+    Settings = Window:AddTab({
+        Title = "Settings",
+        Icon = "settings"
+    })
 }
 
 
 local Options = Fluent.Options
 
 do
-	Fluent:Notify({
-		Title = "Welcome to Rebellion | Sorry but so much features dont work bcs I dont fix it",
-		Content = "Goodluck!",
-		Duration = 15
-	})
-
-
-
-	Tabs.Guide:AddParagraph({
-		Title = "GuideBoss",
-		Content = ""
-	})
-
-    
-
-	Tabs.AvBmst:AddButton({
-		Title = "Fast tycoon connection",
-        
-		Description = "Only if you tycoon",
-		Callback = function()
-
-local function findAndModifyProximityPrompts()
-
-    for _, part in pairs(workspace:GetDescendants()) do
-
-        if part:IsA("Part") and part.Name == "Main" then
-            print("Found part named 'Main': ", part.Position)  
-            
-
-            for _, child in pairs(part:GetChildren()) do
-                if child:IsA("ProximityPrompt") then
-
-                    child.HoldDuration = 0 
-                    print("Modified ProximityPrompt in 'Main' part.")
+    Fluent:Notify({
+        Title = "Welcome to Rebellion | Sorry but so much features dont work bcs I dont fix it",
+        Content = "Goodluck!",
+        Duration = 15
+    })
+    Tabs.Guide:AddParagraph({
+        Title = "GuideBoss",
+        Content = ""
+    })
+    Tabs.AvBmst:AddButton({
+        Title = "Fast tycoon connection",
+        Description = "Only if you tycoon",
+        Callback = function()
+            local function findAndModifyProximityPrompts()
+                for _, part in pairs(workspace:GetDescendants()) do
+                    if part:IsA("Part") and part.Name == "Main" then
+                        print("Found part named 'Main': ", part.Position)
+                        for _, child in pairs(part:GetChildren()) do
+                            if child:IsA("ProximityPrompt") then
+                                child.HoldDuration = 0
+                                print("Modified ProximityPrompt in 'Main' part.")
+                            end
+                        end
+                    end
                 end
             end
+            findAndModifyProximityPrompts()
         end
-    end
-end
-
-
-findAndModifyProximityPrompts()
-
-			end
-		})
-
-
-Tabs.AvBmst:AddButton({
-    Title = "Fast go to basement",
-    Description = "",
-    Callback = function()
-
-local function findAndModifyProximityPrompts()
-
-    for _, part in pairs(workspace:GetDescendants()) do
-
-        if part:IsA("Part") and part.Name:lower() == "main" then
-            print("Found part named 'main': ", part.Position)  
-            
-            for _, child in pairs(part:GetChildren()) do
-                if child:IsA("ProximityPrompt") then
-
-                    child.HoldDuration = 0  
-                    print("Modified ProximityPrompt in 'main' part.")
+    })
+    Tabs.AvBmst:AddButton({
+        Title = "Fast go to basement",
+        Description = "",
+        Callback = function()
+            local function findAndModifyProximityPrompts()
+                for _, part in pairs(workspace:GetDescendants()) do
+                    if part:IsA("Part") and part.Name:lower() == "main" then
+                        print("Found part named 'main': ", part.Position)
+                        for _, child in pairs(part:GetChildren()) do
+                            if child:IsA("ProximityPrompt") then
+                                child.HoldDuration = 0
+                                print("Modified ProximityPrompt in 'main' part.")
+                            end
+                        end
+                    end
                 end
             end
-        end
-    end
-end
 
 -- Call the function to start scanning and modifying prompts
-findAndModifyProximityPrompts()
+            findAndModifyProximityPrompts()
         end
     })
 
@@ -123,602 +139,536 @@ findAndModifyProximityPrompts()
         Title = "Fast repair generator",
         Description = "You need 0 seconds",
         Callback = function()
-
-local function findAndModifyProximityPrompts()
-
-    for _, part in pairs(workspace:GetDescendants()) do
-
-        if part:IsA("Part") and part.Name:lower() == "broken" then
-            print("Found part named 'broken': ", part.Position) 
-            
-
-            for _, child in pairs(part:GetChildren()) do
-                if child:IsA("ProximityPrompt") then
-
-                    child.HoldDuration = 0  
-                    print("Modified ProximityPrompt in 'broken' part.")
+            local function findAndModifyProximityPrompts()
+                for _, part in pairs(workspace:GetDescendants()) do
+                    if part:IsA("Part") and part.Name:lower() == "broken" then
+                        print("Found part named 'broken': ", part.Position)
+                        for _, child in pairs(part:GetChildren()) do
+                            if child:IsA("ProximityPrompt") then
+                                child.HoldDuration = 0
+                                print("Modified ProximityPrompt in 'broken' part.")
+                            end
+                        end
+                    end
                 end
             end
+            findAndModifyProximityPrompts()
         end
-    end
-end
-
-
-findAndModifyProximityPrompts()
-
-            end
-        })
-
-        Tabs.AvBmst:AddButton({
-            Title = "Fast play",
-            Description = "You fast use clone or other morphs",
-            Callback = function()
-
-local function findAndModifyProximityPrompts()
-
-    for _, part in pairs(workspace:GetDescendants()) do
-
-        if part:IsA("Part") and part.Name:lower() == "play" then
-            print("Found part named 'play': ", part.Position)
+    })
+    Tabs.AvBmst:AddButton({
+        Title = "Fast play",
+        Description = "You fast use clone or other morphs",
+        Callback = function()
+            local function findAndModifyProximityPrompts()
+                for _, part in pairs(workspace:GetDescendants()) do
+                    if part:IsA("Part") and part.Name:lower() == "play" then
+                        print("Found part named 'play': ", part.Position)
             
             -- Look for ProximityPrompts within this part
-            for _, prompt in pairs(part:GetChildren()) do
-                if prompt:IsA("ProximityPrompt") then
-
-                    prompt.ActionText = "Interact" 
-                    prompt.RequiresLineOfSight = false  
-                    prompt.HoldDuration = 0  
-                    print("Modified ProximityPrompt in 'play' part.")
+                        for _, prompt in pairs(part:GetChildren()) do
+                            if prompt:IsA("ProximityPrompt") then
+                                prompt.ActionText = "Interact"
+                                prompt.RequiresLineOfSight = false
+                                prompt.HoldDuration = 0
+                                print("Modified ProximityPrompt in 'play' part.")
+                            end
+                        end
+                    end
                 end
             end
+            findAndModifyProximityPrompts()
         end
-    end
-end
-
-findAndModifyProximityPrompts()
-
-                end
-            })
-
-
-
-	Tabs.Guide:AddButton({
-		Title = "Go to Lever",
-		Description = "",
-		Callback = function()
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(3254.56812, -65.9075775, 821.796326, 0.56618458, 0.803046882, -0.185878322, 7.30083585e-08, 0.225504234, 0.97424221, 0.824278474, -0.551600933, 0.127676964)
-			end
-		})
-
-
-
-		Tabs.Main:AddParagraph({
-			Title = "Slap Battles Game",
-			Content = ""
-		})
-
-
-
-        
-
-local Toggle = Tabs.Mjr:AddToggle("MyToggle", {Title = "Box Slap AutoFarm", Default = false })
-
-Options.MyToggle:SetValue(false)  -- Start with the toggle off (optional)
-
-Toggle:OnChanged(function()
-    local Value = Toggle.Value  -- Get the current value of the toggle
-    getgenv().antimegarocksb = Value  -- Set the global variable based on the toggle state
+    })
+    Tabs.Guide:AddButton({
+        Title = "Go to Lever",
+        Description = "",
+        Callback = function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(3254.56812, - 65.9075775, 821.796326, 0.56618458, 0.803046882, - 0.185878322, 7.30083585e-08, 0.225504234, 0.97424221, 0.824278474, - 0.551600933, 0.127676964)
+        end
+    })
+    Tabs.Main:AddParagraph({
+        Title = "Slap Battles Game",
+        Content = ""
+    })
+    local Toggle = Tabs.Mjr:AddToggle("MyToggle", {
+        Title = "Box Slap AutoFarm",
+        Default = false
+    })
+    Options.MyToggle:SetValue(false)  -- Start with the toggle off (optional)
+    Toggle:OnChanged(function()
+        local Value = Toggle.Value  -- Get the current value of the toggle
+        getgenv().antimegarocksb = Value  -- Set the global variable based on the toggle state
 
     -- Check if the toggle is ON
-    if Value then
+        if Value then
         -- Your existing script inside the condition when the toggle is ON
-        if game.PlaceId == 7234087065 then
-            firetouchinterest(game:GetService("Workspace").Buildings.house.TP, game.Players.LocalPlayer.Character.Torso, 1)
-            firetouchinterest(game:GetService("Workspace").Buildings.house.TP, game.Players.LocalPlayer.Character.Torso, 0)
-            wait(2)
-            fireclickdetector(workspace.BoxingGloves.ClickDetector)
-            return
-        end
-
-        local function swait()
-            game:GetService("RunService").Stepped:wait()
-        end
-
-        local Lobby, GlovesStand, RegularPortal = loadstring(game:HttpGet(('https://raw.githubusercontent.com/DonjoScripts/General-SB-/refs/heads/SlapBattles/SlapBattles-PartsName.lua'), true))()
-
-        local function PlrHasGlove(Name)
-            if game.Players.LocalPlayer and game.Players.LocalPlayer:FindFirstChild("_unlockedGloves") then
-                if game.Players.LocalPlayer._unlockedGloves:FindFirstChild(Name) and game.Players.LocalPlayer._unlockedGloves:FindFirstChild(Name).Value == true then
-                    return true
-                end
+            if game.PlaceId == 7234087065 then
+                firetouchinterest(game:GetService("Workspace").Buildings.house.TP, game.Players.LocalPlayer.Character.Torso, 1)
+                firetouchinterest(game:GetService("Workspace").Buildings.house.TP, game.Players.LocalPlayer.Character.Torso, 0)
+                wait(2)
+                fireclickdetector(workspace.BoxingGloves.ClickDetector)
+                return
             end
-            return false
-        end
-
-        if not PlrHasGlove("Boxer") then
-            game:GetService("TeleportService"):Teleport(7234087065)
-            return
-        end
-
-        if game.Players.LocalPlayer.leaderstats.Glove.Value ~= "Boxer" then
-            fireclickdetector(Lobby.Boxer.ClickDetector)
-        end
-
-        spawn(function()
-            for i = 1, 30 do
-                for i, p in pairs(game.Players:GetPlayers()) do
-                    while true do
-                        spawn(function()
-                            local args = {
-                                [1] = p,
-                                [2] = false
-                            }
-
-                            game:GetService("ReplicatedStorage").Events.Boxing:FireServer(unpack(args))
-                            local args = {
-                                [1] = p,
-                                [2] = true
-                            }
-
-                            game:GetService("ReplicatedStorage").Events.Boxing:FireServer(unpack(args))
-                        end)
-                        swait()
+            local function swait()
+                game:GetService("RunService").Stepped:wait()
+            end
+            local Lobby, GlovesStand, RegularPortal = loadstring(game:HttpGet(('https://raw.githubusercontent.com/DonjoScripts/General-SB-/refs/heads/SlapBattles/SlapBattles-PartsName.lua'), true))()
+            local function PlrHasGlove(Name)
+                if game.Players.LocalPlayer and game.Players.LocalPlayer:FindFirstChild("_unlockedGloves") then
+                    if game.Players.LocalPlayer._unlockedGloves:FindFirstChild(Name) and game.Players.LocalPlayer._unlockedGloves:FindFirstChild(Name).Value == true then
+                        return true
                     end
-                    wait(0.1)
                 end
+                return false
             end
-        end)
-
-    else
-        -- The toggle is off, so stop the script or do nothing
-        -- You can add additional code here if needed for when the toggle is off
-    end
-end)
-
-
--- Bob Boss
-
-local AutoSlapBobToggle = Tabs.BobBoss:AddToggle("AutoSlapBob", {Title="Auto Slap Bob", Default=false})
-AutoSlapBobToggle:OnChanged(function(state)
-    getgenv().autoslapboba=state
-    if state then
-        while getgenv().autoslapboba do
-            -- Your logic here
-            task.wait(0.1)
-        end
-    end
-end)
-
--- Toggle for Slap Mini Bobs
-local SlapMiniBobsToggle = Tabs.BobBoss:AddToggle("SlapMiniBobs", {Title = "Slap mini bobs", Default = false })
-
-SlapMiniBobsToggle:OnChanged(function(state)
-    getgenv().slapminiboba = state
-
-    if state then
-        while getgenv().slapminiboba do
-            local gloveType = game.Players.LocalPlayer.leaderstats.Glove.Value
-            
-            for _, v in ipairs(workspace:GetDescendants()) do
-                if v.Name == "BobClone" then
-                    if gloveType == "Reaper" then
-                        game:GetService("ReplicatedStorage").ReaperHit:FireServer(v:FindFirstChild("HumanoidRootPart"))
-                    elseif gloveType == "Killstreak" then
-                        game:GetService("ReplicatedStorage").KSHit:FireServer(v:FindFirstChild("HumanoidRootPart"))
-                    elseif gloveType == "God's Hand" then
-                        game:GetService("ReplicatedStorage").Godshand:FireServer(v:FindFirstChild("HumanoidRootPart"))
-                    elseif gloveType == "Tycoon" then
-                        game:GetService("ReplicatedStorage").GeneralHit:FireServer(v:FindFirstChild("HumanoidRootPart"))
-                    elseif gloveType == "Default" then
-                        for _, player in pairs(game.Players:GetPlayers()) do
-                            if player ~= game.Players.LocalPlayer and player.Character and player.Character:FindFirstChild("Ragdolled") and not player.Character.Ragdolled.Value then  
-                                game:GetService("ReplicatedStorage").b:FireServer(player.Character:FindFirstChild("HumanoidRootPart"))
-                            end
+            if not PlrHasGlove("Boxer") then
+                game:GetService("TeleportService"):Teleport(7234087065)
+                return
+            end
+            if game.Players.LocalPlayer.leaderstats.Glove.Value ~= "Boxer" then
+                fireclickdetector(Lobby.Boxer.ClickDetector)
+            end
+            spawn(function()
+                for i = 1, 30 do
+                    for i, p in pairs(game.Players:GetPlayers()) do
+                        while true do
+                            spawn(function()
+                                local args = {
+                                    [1] = p,
+                                    [2] = false
+                                }
+                                game:GetService("ReplicatedStorage").Events.Boxing:FireServer(unpack(args))
+                                local args = {
+                                    [1] = p,
+                                    [2] = true
+                                }
+                                game:GetService("ReplicatedStorage").Events.Boxing:FireServer(unpack(args))
+                            end)
+                            swait()
                         end
-                    end
-                end 
-            end
-            
-            task.wait(0.25)
-        end
-        
-    else 
-        print("Slap mini Bobs disabled.")
-    end  
-end)
-
--- Toggle for Anti Ring 
-local AntiRingToggle = Tabs.BobBoss:AddToggle("AntiRing", {Title = "Anti Ring", Default = false })
-
-AntiRingToggle:OnChanged(function(state)
-    getgenv().antiringsbob = state 
-
-    if state then  
-        while getgenv().antiringsbob do 
-            local ring = workspace:FindFirstChild("Ring")  
-            if ring then 
-                ring:Destroy()  
-            end 
-            task.wait(0.2)  
-        end 
-    else  
-        print("Antirings functionality disabled.")
-    end  
-end)
-
-local Toggle = Tabs.BobBoss:AddToggle("MyToggle", {Title = "Anti-Ragdoll", Default = false })
-
-Toggle:OnChanged(function(state) 
-    getgenv().antiragdoldr = state
-    
-    -- If the toggle is turned OFF
-    if not state then  
-        if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Torso") then
-            game.Players.LocalPlayer.Character.Torso.Anchored = false  -- Unanchor torso
-        end
-        return  
-    end
-
-    while getgenv().antiragdoldr do  -- Loop while the toggle is ON
-        local ragdolled = game.Players.LocalPlayer.Character:WaitForChild("Ragdolled")
-        
-        if ragdolled.Value == true then  -- If character is ragdolled
-            if game.Players.LocalPlayer.Character:FindFirstChild("Torso") then
-                game.Players.LocalPlayer.Character.Torso.Anchored = true  -- Anchor torso
-            
-                repeat 
-                    task.wait()  -- Wait until not ragdolled
-                until ragdolled.Value == false
-                
-                game.Players.LocalPlayer.Character.Torso.Anchored = false  -- Unanchor when no longer ragdolled
-            end
-        end
-        
-        task.wait(0.1)
-    end 
-end)
-
-Options.MyToggle:SetValue(false) 
-
-
-
-
-
-
-
-
-
-        local Toggle = Tabs.SlpRyl:AddToggle("MyToggle", {Title = "Auto Use Item in hand (if you dont use, you can get kick)", Default = false })
-
-  
-        local autoItemActivation = false
-        
-        Toggle:OnChanged(function()
-            local Value = Toggle.Value  
-        
-
-            getgenv().autoitemssr = Value
-        
-            if Value then
-                -- Start the loop for activating items
-                autoItemActivation = true
-                while autoItemActivation do
-                    for _, item in ipairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-                        if item:IsA("Tool") and not (item.Name == "Witch" or item.Name == "Void" or item.Name == "Vigorous" or 
-                                                     item.Name == "Vampire" or item.Name == "Thundercaller" or 
-                                                     item.Name == "Tank" or item.Name == "Revenge" or 
-                                                     item.Name == "Pow" or item.Name == "Pack-A-Punch" or 
-                                                     item.Name == "Missile-Launcher" or item.Name == "KABOOM" or 
-                                                     item.Name == "Juggernaut" or item.Name == "Glacier" or 
-                                                     item.Name == "Faculty" or item.Name == "Cannoneer" or 
-                                                     item.Name == "Aquarius" or item.Name == "Aerialist") then
-                            item:Activate()
-                        end
-                    end
-                    task.wait() 
-                end
-            else
-
-                autoItemActivation = false
-            end
-        end)
-        
-        Options.MyToggle:SetValue(false)  
-        
-        
-
-        local Toggle = Tabs.SlpRyl:AddToggle("MyToggle", {Title = "Get All Items", Default = false })
-
-Toggle:OnChanged(function()
-    local Value = Toggle.Value 
-
-    if Value then  
-        if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("inMatch") and game.Players.LocalPlayer.Character.inMatch.Value == true then
-            for _, v in ipairs(game.Workspace.Items:GetChildren()) do
-                if v:IsA("Tool") and v:FindFirstChild("Handle") then
-                    v.Handle.Anchored = false
-                    v.Handle.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-                    game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-
-                    for _ = 1, 3 do
-                        game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
-                    end
-                end
-            end
-
-            for _ = 1, 3 do
-                game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
-            end
-        else
-            game:GetService("StarterGui"):SetCore("SendNotification", {
-                Title = "Error",
-                Text = "Wait For Match Started.",
-                Icon = "rbxassetid://7733658504",
-                Duration = 5
-            })
-        end
-    end
-end)
-
-Options.MyToggle:SetValue(false)  
-
-
-        Tabs.Badgs:AddButton({
-            Title = "Get bomb glove",
-            Description = "Need warp and located in area",
-            Callback = function()
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/AlexCode2122/Fly111/main/f",true))();
-                end
-            })
-
-            Tabs.Badgs:AddButton({
-                Title = "Get plank glove",
-                Description = "Need fort glove",
-                Callback = function()
-                    loadstring(game:HttpGet("https://raw.githubusercontent.com/AlexCode2122/Alphach/main/alll",true))();
-                    end
-                })
-
-            Tabs.Badgs:AddButton({
-                Title = "Get psyho glove",
-                Description = "In limbo",
-                Callback = function()
-                    loadstring(game:HttpGet("https://raw.githubusercontent.com/AlexCode2122/ddddddd/main/ddddddddd",true))();
-                    end
-                })
-
-                Tabs.Badgs:AddButton({
-                    Title = "Get Frostbite glove",
-                    Description = "Nothing",
-                    Callback = function()
-                        loadstring(game:HttpGet("https://raw.githubusercontent.com/AlexCode2122/yes/main/ssss",true))();
-                        end
-                    })
-        
-
-                    
-        Tabs.Guide:AddButton({
-            Title = "Fly",
-            Description = "",
-            Callback = function()
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
-                end
-            })
-
-            local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Spam Shukuchi Ability", Default = false})
-
-Toggle:OnChanged(function()
-    local Value = Toggle.Value
-    getgenv().spamshuk = Value 
-
-    if Value then
-
-        if game.Players.LocalPlayer.leaderstats.Glove.Value == "Shukuchi" then
-            while getgenv().spamshuk do
-                for _, v in pairs(game.Players:GetPlayers()) do
-                    if v ~= game.Players.LocalPlayer and v.Character then
-                        local humanoidRootPart = v.Character:FindFirstChild("HumanoidRootPart")
-                        if humanoidRootPart and 
-                           not v.Character:FindFirstChild("rock") and 
-                           humanoidRootPart.BrickColor ~= BrickColor.new("New Yeller") and 
-                           v.Character:FindFirstChild("Ragdolled") and 
-                           not v.Character.Ragdolled.Value and 
-                           not v.Character.Head:FindFirstChild("RedEye") and 
-                           not v.Character.Head:FindFirstChild("UnoReverseCard") then
-                           
-                            game:GetService("ReplicatedStorage"):WaitForChild("SM"):FireServer(v)
-                        end
-                    end
-                end
-                
-                task.wait()
-            end
-        else
-            -- Notify user that they need the Shukuchi glove
-            game:GetService("StarterGui"):SetCore("SendNotification", {
-                Title = "Error",
-                Text = "Need Shukuchi Glove.",
-                Icon = "rbxassetid://7733658504",
-                Duration = 5
-            })
-        end
-    end
-end)
-
-Options.MyToggle:SetValue(false) 
-
-
-
-            local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Ping Pong Ability", Default = false})
-
-            Toggle:OnChanged(function()
-                local Value = Toggle.Value
-                getgenv().sppingsb = Value
-            
-                if Value then
-                    -- Check if player has the "Ping Pong" glove before starting the loop
-                    if game.Players.LocalPlayer.leaderstats.Glove.Value == "Ping Pong" then
-                        while getgenv().sppingsb do
-                            game:GetService("ReplicatedStorage").GeneralAbility:FireServer()
-            
-                            local players = game.Players:GetChildren()
-                            local RandomPlayer = players[math.random(1, #players)]
-                            
-                            repeat
-                                RandomPlayer = players[math.random(1, #players)]
-                            until RandomPlayer ~= game.Players.LocalPlayer and 
-                                  RandomPlayer.Character and 
-                                  RandomPlayer.Character:FindFirstChild("rock") == nil and 
-                                  RandomPlayer.Character.Head:FindFirstChild("UnoReverseCard") == nil and 
-                                  RandomPlayer.Character:FindFirstChild("entered")
-                            
-                            if RandomPlayer ~= game.Players.LocalPlayer.Name and RandomPlayer.Character then
-                                for i,v in pairs(game.Workspace:GetChildren()) do
-                                    if v:IsA("Part") and v.Name == game.Players.LocalPlayer.Name.."_PingPongBall" then
-                                        v.CFrame = RandomPlayer.Character.HumanoidRootPart.CFrame
-                                    end
-                                end
-                            end
-                            
-                            task.wait(0.5) 
-                        end
-                    else
-                        game:GetService("StarterGui"):SetCore("SendNotification", {
-                            Title = "Error",
-                            Text = "Need Ping Pong Glove.",
-                            Icon = "rbxassetid://7733658504",
-                            Duration = 5
-                        })
+                        wait(0.1)
                     end
                 end
             end)
-            
-            Options.MyToggle:SetValue(false) 
-            
-
-
-            local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Spam Rhythm Explosion", Default = false})
-
-Toggle:OnChanged(function()
-    local Value = Toggle.Value
-    getgenv().spamrhytm = Value 
-
-    if Value then
-        -- Start the spam loop only if toggle is turned on
-        while getgenv().spamrhytm do
-            local args = {
-                [1] = "AoeExplosion",
-                [2] = 42
-            }
-            
-            game:GetService("ReplicatedStorage"):WaitForChild("rhythmevent"):FireServer(unpack(args))
-            task.wait(0.5) 
+        else
+        -- The toggle is off, so stop the script or do nothing
+        -- You can add additional code here if needed for when the toggle is off
         end
-    end
-end)
-
-Options.MyToggle:SetValue(false) 
+    end)
 
 
-            local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Use Null ability", Default = false})
-
-Toggle:OnChanged(function()
-    local Value = Toggle.Value
-    getgenv().nullspam = Value 
-
-    if Value then
-
-        while getgenv().nullspam do
-            game:GetService("ReplicatedStorage"):WaitForChild("NullAbility"):FireServer()
-            task.wait(0.5) 
+-- Bob Boss
+    local AutoSlapBobToggle = Tabs.BobBoss:AddToggle("AutoSlapBob", {
+        Title = "Auto Slap Bob",
+        Default = false
+    })
+    AutoSlapBobToggle:OnChanged(function(state)
+        getgenv().autoslapboba = state
+        if state then
+            while getgenv().autoslapboba do
+            -- Your logic here
+                task.wait(0.1)
+            end
         end
-    end
-end)
+    end)
 
-Options.MyToggle:SetValue(false) 
-
-
-
-        local Toggle = Tabs.Guide:AddToggle("MyToggle", {Title = "Slap Golem", Default = false })
-
-Toggle:OnChanged(function()
-    local Value = Toggle.Value  
-
-    if Value then  
-
-        if game.Players.LocalPlayer.Backpack:FindFirstChild("Lantern") then 
-            game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Lantern) 
-        end
-        
-
-        while Toggle.Value do  
- 
-            if game.Players.LocalPlayer.Character:FindFirstChild("Lantern") then 
-
-                for _, v in pairs(game.workspace:GetChildren()) do
-                    if v.Name == "golem" and v:FindFirstChild("Hitbox") then
-                        local tool = game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Tool")
-                        if tool then
-                            tool:Activate()  -- Activate the currently equipped tool
-
-                            local args = {
-                                [1] = "Hit",
-                                [2] = v.Hitbox,
-                            }
-
-                            -- Fire the server with arguments, ensure network is correctly referenced
-                            if game.Players.LocalPlayer.Character.Lantern and game.Players.LocalPlayer.Character.Lantern.Network then
-                                game.Players.LocalPlayer.Character.Lantern.Network:FireServer(unpack(args))
-                            else
-                                warn("Network not found or invalid.")
+-- Toggle for Slap Mini Bobs
+    local SlapMiniBobsToggle = Tabs.BobBoss:AddToggle("SlapMiniBobs", {
+        Title = "Slap mini bobs",
+        Default = false
+    })
+    SlapMiniBobsToggle:OnChanged(function(state)
+        getgenv().slapminiboba = state
+        if state then
+            while getgenv().slapminiboba do
+                local gloveType = game.Players.LocalPlayer.leaderstats.Glove.Value
+                for _, v in ipairs(workspace:GetDescendants()) do
+                    if v.Name == "BobClone" then
+                        if gloveType == "Reaper" then
+                            game:GetService("ReplicatedStorage").ReaperHit:FireServer(v:FindFirstChild("HumanoidRootPart"))
+                        elseif gloveType == "Killstreak" then
+                            game:GetService("ReplicatedStorage").KSHit:FireServer(v:FindFirstChild("HumanoidRootPart"))
+                        elseif gloveType == "God's Hand" then
+                            game:GetService("ReplicatedStorage").Godshand:FireServer(v:FindFirstChild("HumanoidRootPart"))
+                        elseif gloveType == "Tycoon" then
+                            game:GetService("ReplicatedStorage").GeneralHit:FireServer(v:FindFirstChild("HumanoidRootPart"))
+                        elseif gloveType == "Default" then
+                            for _, player in pairs(game.Players:GetPlayers()) do
+                                if player ~= game.Players.LocalPlayer and player.Character and player.Character:FindFirstChild("Ragdolled") and not player.Character.Ragdolled.Value then
+                                    game:GetService("ReplicatedStorage").b:FireServer(player.Character:FindFirstChild("HumanoidRootPart"))
+                                end
                             end
-                        else
-                            warn("No valid tool found in character.")
                         end
                     end
                 end
+                task.wait(0.25)
             end
-            
-            wait(0.1)  
+        else
+            print("Slap mini Bobs disabled.")
         end
-        
-    else  
-        print("Slap Guide is turned off.")  
-    end
-end)
+    end)
 
-Options.MyToggle:SetValue(false) 
+-- Toggle for Anti Ring
+    local AntiRingToggle = Tabs.BobBoss:AddToggle("AntiRing", {
+        Title = "Anti Ring",
+        Default = false
+    })
+    AntiRingToggle:OnChanged(function(state)
+        getgenv().antiringsbob = state
+        if state then
+            while getgenv().antiringsbob do
+                local ring = workspace:FindFirstChild("Ring")
+                if ring then
+                    ring:Destroy()
+                end
+                task.wait(0.2)
+            end
+        else
+            print("Antirings functionality disabled.")
+        end
+    end)
+    local Toggle = Tabs.BobBoss:AddToggle("MyToggle", {
+        Title = "Anti-Ragdoll",
+        Default = false
+    })
+    Toggle:OnChanged(function(state)
+        getgenv().antiragdoldr = state
+    
+    -- If the toggle is turned OFF
+        if not state then
+            if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Torso") then
+                game.Players.LocalPlayer.Character.Torso.Anchored = false  -- Unanchor torso
+            end
+            return
+        end
+        while getgenv().antiragdoldr do  -- Loop while the toggle is ON
+            local ragdolled = game.Players.LocalPlayer.Character:WaitForChild("Ragdolled")
+            if ragdolled.Value == true then  -- If character is ragdolled
+                if game.Players.LocalPlayer.Character:FindFirstChild("Torso") then
+                    game.Players.LocalPlayer.Character.Torso.Anchored = true  -- Anchor torso
+                    repeat
+                        task.wait()  -- Wait until not ragdolled
+                    until ragdolled.Value == false
+                    game.Players.LocalPlayer.Character.Torso.Anchored = false  -- Unanchor when no longer ragdolled
+                end
+            end
+            task.wait(0.1)
+        end
+    end)
+    Options.MyToggle:SetValue(false)
+    local Toggle = Tabs.SlpRyl:AddToggle("MyToggle", {
+        Title = "Auto Use Item in hand (if you dont use, you can get kick)",
+        Default = false
+    })
+    local autoItemActivation = false
+    Toggle:OnChanged(function()
+        local Value = Toggle.Value
+        getgenv().autoitemssr = Value
+        if Value then
+                -- Start the loop for activating items
+            autoItemActivation = true
+            while autoItemActivation do
+                for _, item in ipairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                    if item:IsA("Tool") and not (item.Name == "Witch" or item.Name == "Void" or item.Name == "Vigorous" or item.Name == "Vampire" or item.Name == "Thundercaller" or item.Name == "Tank" or item.Name == "Revenge" or item.Name == "Pow" or item.Name == "Pack-A-Punch" or item.Name == "Missile-Launcher" or item.Name == "KABOOM" or item.Name == "Juggernaut" or item.Name == "Glacier" or item.Name == "Faculty" or item.Name == "Cannoneer" or item.Name == "Aquarius" or item.Name == "Aerialist") then
+                        item:Activate()
+                    end
+                end
+                task.wait()
+            end
+        else
+            autoItemActivation = false
+        end
+    end)
+    Options.MyToggle:SetValue(false)
+    local Toggle = Tabs.SlpRyl:AddToggle("MyToggle", {
+        Title = "Get All Items",
+        Default = false
+    })
+    Toggle:OnChanged(function()
+        local Value = Toggle.Value
+        if Value then
+            if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("inMatch") and game.Players.LocalPlayer.Character.inMatch.Value == true then
+                for _, v in ipairs(game.Workspace.Items:GetChildren()) do
+                    if v:IsA("Tool") and v:FindFirstChild("Handle") then
+                        v.Handle.Anchored = false
+                        v.Handle.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+                        game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+                        for _ = 1, 3 do
+                            game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
+                        end
+                    end
+                end
+                for _ = 1, 3 do
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
+                end
+            else
+                game:GetService("StarterGui"):SetCore("SendNotification", {
+                    Title = "Error",
+                    Text = "Wait For Match Started.",
+                    Icon = "rbxassetid://7733658504",
+                    Duration = 5
+                })
+            end
+        end
+    end)
+    Options.MyToggle:SetValue(false)
+    Tabs.Badgs:AddButton({
+        Title = "Get bomb glove",
+        Description = "Need warp and located in area",
+        Callback = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/AlexCode2122/Fly111/main/f", true))();
+        end
+    })
+    Tabs.Badgs:AddButton({
+        Title = "Get plank glove",
+        Description = "Need fort glove",
+        Callback = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/AlexCode2122/Alphach/main/alll", true))();
+        end
+    })
+    Tabs.Badgs:AddButton({
+        Title = "Get psyho glove",
+        Description = "In limbo",
+        Callback = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/AlexCode2122/ddddddd/main/ddddddddd", true))();
+        end
+    })
+    Tabs.Badgs:AddButton({
+        Title = "Get Frostbite glove",
+        Description = "Nothing",
+        Callback = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/AlexCode2122/yes/main/ssss", true))();
+        end
+    })
+    Tabs.Guide:AddButton({
+        Title = "Fly",
+        Description = "",
+        Callback = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
+        end
+    })
+    local Toggle = Tabs.Main:AddToggle("MyToggle", {
+        Title = "Spam Shukuchi Ability",
+        Default = false
+    })
+    Toggle:OnChanged(function()
+        local Value = Toggle.Value
+        getgenv().spamshuk = Value
+        if Value then
+            if game.Players.LocalPlayer.leaderstats.Glove.Value == "Shukuchi" then
+                while getgenv().spamshuk do
+                    for _, v in pairs(game.Players:GetPlayers()) do
+                        if v ~= game.Players.LocalPlayer and v.Character then
+                            local humanoidRootPart = v.Character:FindFirstChild("HumanoidRootPart")
+                            if humanoidRootPart and not v.Character:FindFirstChild("rock") and humanoidRootPart.BrickColor ~= BrickColor.new("New Yeller") and v.Character:FindFirstChild("Ragdolled") and not v.Character.Ragdolled.Value and not v.Character.Head:FindFirstChild("RedEye") and not v.Character.Head:FindFirstChild("UnoReverseCard") then
+                                game:GetService("ReplicatedStorage"):WaitForChild("SM"):FireServer(v)
+                            end
+                        end
+                    end
+                    task.wait()
+                end
+            else
+            -- Notify user that they need the Shukuchi glove
+                game:GetService("StarterGui"):SetCore("SendNotification", {
+                    Title = "Error",
+                    Text = "Need Shukuchi Glove.",
+                    Icon = "rbxassetid://7733658504",
+                    Duration = 5
+                })
+            end
+        end
+    end)
+    Options.MyToggle:SetValue(false)
+    local Toggle = Tabs.Main:AddToggle("MyToggle", {
+        Title = "Ping Pong Ability",
+        Default = false
+    })
+    Toggle:OnChanged(function()
+        local Value = Toggle.Value
+        getgenv().sppingsb = Value
+        if Value then
+                    -- Check if player has the "Ping Pong" glove before starting the loop
+            if game.Players.LocalPlayer.leaderstats.Glove.Value == "Ping Pong" then
+                while getgenv().sppingsb do
+                    game:GetService("ReplicatedStorage").GeneralAbility:FireServer()
+                    local players = game.Players:GetChildren()
+                    local RandomPlayer = players[math.random(1, # players)]
+                    repeat
+                        RandomPlayer = players[math.random(1, # players)]
+                    until RandomPlayer ~= game.Players.LocalPlayer and RandomPlayer.Character and RandomPlayer.Character:FindFirstChild("rock") == nil and RandomPlayer.Character.Head:FindFirstChild("UnoReverseCard") == nil and RandomPlayer.Character:FindFirstChild("entered")
+                    if RandomPlayer ~= game.Players.LocalPlayer.Name and RandomPlayer.Character then
+                        for i, v in pairs(game.Workspace:GetChildren()) do
+                            if v:IsA("Part") and v.Name == game.Players.LocalPlayer.Name .. "_PingPongBall" then
+                                v.CFrame = RandomPlayer.Character.HumanoidRootPart.CFrame
+                            end
+                        end
+                    end
+                    task.wait(0.5)
+                end
+            else
+                game:GetService("StarterGui"):SetCore("SendNotification", {
+                    Title = "Error",
+                    Text = "Need Ping Pong Glove.",
+                    Icon = "rbxassetid://7733658504",
+                    Duration = 5
+                })
+            end
+        end
+    end)
+    Options.MyToggle:SetValue(false)
+    local Toggle = Tabs.Main:AddToggle("MyToggle", {
+        Title = "Spam Rhythm Explosion",
+        Default = false
+    })
+    Toggle:OnChanged(function()
+        local Value = Toggle.Value
+        getgenv().spamrhytm = Value
+        if Value then
+        -- Start the spam loop only if toggle is turned on
+            while getgenv().spamrhytm do
+                local args = {
+                    [1] = "AoeExplosion",
+                    [2] = 42
+                }
+                game:GetService("ReplicatedStorage"):WaitForChild("rhythmevent"):FireServer(unpack(args))
+                task.wait(0.5)
+            end
+        end
+    end)
+    Options.MyToggle:SetValue(false)
+    local Toggle = Tabs.Main:AddToggle("MyToggle", {
+        Title = "Use Null ability",
+        Default = false
+    })
+    Toggle:OnChanged(function()
+        local Value = Toggle.Value
+        getgenv().nullspam = Value
+        if Value then
+            while getgenv().nullspam do
+                game:GetService("ReplicatedStorage"):WaitForChild("NullAbility"):FireServer()
+                task.wait(0.5)
+            end
+        end
+    end)
+    Options.MyToggle:SetValue(false)
+    local Toggle = Tabs.Guide:AddToggle("MyToggle", {
+        Title = "Slap Golem",
+        Default = false
+    })
+    Toggle:OnChanged(function()
+        local Value = Toggle.Value
+        if Value then
+            if game.Players.LocalPlayer.Backpack:FindFirstChild("Lantern") then
+                game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Lantern)
+            end
+            while Toggle.Value do
+                if game.Players.LocalPlayer.Character:FindFirstChild("Lantern") then
+                    for _, v in pairs(game.workspace:GetChildren()) do
+                        if v.Name == "golem" and v:FindFirstChild("Hitbox") then
+                            local tool = game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Tool")
+                            if tool then
+                                tool:Activate()  -- Activate the currently equipped tool
+                                local args = {
+                                    [1] = "Hit",
+                                    [2] = v.Hitbox,
+                                }
 
-
-
-        local Toggle = Tabs.Guide:AddToggle("MyToggle", {Title = "Slap Guide", Default = false })
-
-Toggle:OnChanged(function()
-    local Value = Toggle.Value  -- Get the current value of the toggle
-
-    if Value then  -- Check if the toggle is on
+                            -- Fire the server with arguments, ensure network is correctly referenced
+                                if game.Players.LocalPlayer.Character.Lantern and game.Players.LocalPlayer.Character.Lantern.Network then
+                                    game.Players.LocalPlayer.Character.Lantern.Network:FireServer(unpack(args))
+                                else
+                                    warn("Network not found or invalid.")
+                                end
+                            else
+                                warn("No valid tool found in character.")
+                            end
+                        end
+                    end
+                end
+                wait(0.1)
+            end
+        else
+            print("Slap Guide is turned off.")
+        end
+    end)
+    Options.MyToggle:SetValue(false)
+    local Toggle = Tabs.Guide:AddToggle("MyToggle", {
+        Title = "Slap Guide",
+        Default = false
+    })
+    Toggle:OnChanged(function()
+        local Value = Toggle.Value  -- Get the current value of the toggle
+        if Value then  -- Check if the toggle is on
         -- Equip the Lantern tool from Backpack if available
-        if game.Players.LocalPlayer.Backpack:FindFirstChild("Lantern") then 
-            game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Lantern) 
-        end
+            if game.Players.LocalPlayer.Backpack:FindFirstChild("Lantern") then
+                game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Lantern)
+            end
         
         -- Loop indefinitely while the toggle is on
-        while Toggle.Value do  
+            while Toggle.Value do  
             -- Check if Lantern is equipped
-            if game.Players.LocalPlayer.Character:FindFirstChild("Lantern") then 
+                if game.Players.LocalPlayer.Character:FindFirstChild("Lantern") then 
                 -- Loop through all children in the workspace
+                    for _, v in pairs(game.workspace:GetChildren()) do
+                        if v.Name == "GuideNPC" and v:FindFirstChild("HumanoidRootPart") then
+                            local tool = game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Tool")
+                            if tool then
+                                tool:Activate()  -- Activate the currently equipped tool
+                                local args = {
+                                    [1] = "Hit",
+                                    [2] = v.HumanoidRootPart,
+                                }
+                            
+                            -- Fire the server with arguments, ensure network is correctly referenced
+                                if game.Players.LocalPlayer.Character.Lantern and game.Players.LocalPlayer.Character.Lantern.Network then
+                                    game.Players.LocalPlayer.Character.Lantern.Network:FireServer(unpack(args))
+                                else
+                                    warn("Network not found or invalid.")
+                                end
+                            else
+                                warn("No valid tool found in character.")
+                            end
+                        end
+                    end
+                end
+                wait(0.1)  -- Wait briefly before repeating (adjust duration as necessary)
+            end
+        else  -- If the toggle is turned off, you can handle deactivation logic here.
+            print("Slap Guide is turned off.")  -- Optional message when toggle is off
+        end
+    end)
+    Options.MyToggle:SetValue(false)  -- Start with the toggle off (optional)
+    local Toggle = Tabs.Guide:AddToggle("MyToggle", {
+        Title = "Slap Humanoid`s",
+        Default = false
+    })
+    Toggle:OnChanged(function()
+        local Value = Toggle.Value  -- Get the current value of the toggle
+        if Value then  -- If the toggle is on
+        -- Start executing the tracking logic
+            while Toggle.Value do  -- Continue as long as the toggle is still on
+            -- Check if the player has a Lantern in their Backpack
+                if game.Players.LocalPlayer.Backpack:FindFirstChild("Lantern") then
+                    game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Lantern)
+                end
+            
+            -- Optional: Check if the player has a Lantern in their Character (add any logic needed here)
+                if game.Players.LocalPlayer.Character:FindFirstChild("Lantern") then 
+                ---- (insert any additional logic here)
+                end
+            
+            -- Loop through all children in the workspace
                 for _, v in pairs(game.workspace:GetChildren()) do
-                    if v.Name == "GuideNPC" and v:FindFirstChild("HumanoidRootPart") then
+                    if v.Name == "ReplicaNPC" and v:FindFirstChild("HumanoidRootPart") then
                         local tool = game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Tool")
                         if tool then
                             tool:Activate()  -- Activate the currently equipped tool
-
                             local args = {
                                 [1] = "Hit",
                                 [2] = v.HumanoidRootPart,
                             }
-                            
-                            -- Fire the server with arguments, ensure network is correctly referenced
+                        
+                        -- Fire the server with arguments, ensure network is correctly referenced
                             if game.Players.LocalPlayer.Character.Lantern and game.Players.LocalPlayer.Character.Lantern.Network then
                                 game.Players.LocalPlayer.Character.Lantern.Network:FireServer(unpack(args))
                             else
@@ -729,359 +679,275 @@ Toggle:OnChanged(function()
                         end
                     end
                 end
+                wait(0.1)  -- Wait before repeating (adjust duration as necessary)
             end
-            
-            wait(0.1)  -- Wait briefly before repeating (adjust duration as necessary)
+        else  -- If the toggle is turned off, print a message or handle deactivation logic here.
+            print("Tracking is turned off.")
         end
-        
-    else  -- If the toggle is turned off, you can handle deactivation logic here.
-        print("Slap Guide is turned off.")  -- Optional message when toggle is off
-    end
-end)
-
-Options.MyToggle:SetValue(false)  -- Start with the toggle off (optional)
-
-        
-
-        local Toggle = Tabs.Guide:AddToggle("MyToggle", {Title = "Slap Humanoid`s", Default = false })
-
-Toggle:OnChanged(function()
-    local Value = Toggle.Value  -- Get the current value of the toggle
-
-    if Value then  -- If the toggle is on
-        -- Start executing the tracking logic
-        while Toggle.Value do  -- Continue as long as the toggle is still on
-            -- Check if the player has a Lantern in their Backpack
-            if game.Players.LocalPlayer.Backpack:FindFirstChild("Lantern") then 
-                game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Lantern) 
-            end
-            
-            -- Optional: Check if the player has a Lantern in their Character (add any logic needed here)
-            if game.Players.LocalPlayer.Character:FindFirstChild("Lantern") then 
-                ---- (insert any additional logic here)
-            end
-            
-            -- Loop through all children in the workspace
-            for _, v in pairs(game.workspace:GetChildren()) do
-                if v.Name == "ReplicaNPC" and v:FindFirstChild("HumanoidRootPart") then
-                    local tool = game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Tool")
-                    if tool then
-                        tool:Activate()  -- Activate the currently equipped tool
-
-                        local args = {
-                            [1] = "Hit",
-                            [2] = v.HumanoidRootPart,
-                        }
-                        
-                        -- Fire the server with arguments, ensure network is correctly referenced
-                        if game.Players.LocalPlayer.Character.Lantern and game.Players.LocalPlayer.Character.Lantern.Network then
-                            game.Players.LocalPlayer.Character.Lantern.Network:FireServer(unpack(args))
-                        else
-                            warn("Network not found or invalid.")
-                        end
-                    else
-                        warn("No valid tool found in character.")
-                    end
-                end
-            end
-
-            wait(0.1)  -- Wait before repeating (adjust duration as necessary)
-        end
-    
-    else  -- If the toggle is turned off, print a message or handle deactivation logic here.
-        print("Tracking is turned off.")
-    end
-end)
-
-Options.MyToggle:SetValue(false)  -- Start with the toggle off (optional)
-
-
- local Toggle = Tabs.Guide:AddToggle("MyToggle2", {Title = "Track slap", Default = false })
-
-Toggle:OnChanged(function()
-    local Value = Toggle.Value  -- Use the Toggle object's Value directly
-
-    if Value then  -- Check if the toggle is on
+    end)
+    Options.MyToggle:SetValue(false)  -- Start with the toggle off (optional)
+    local Toggle = Tabs.Guide:AddToggle("MyToggle2", {
+        Title = "Track slap",
+        Default = false
+    })
+    Toggle:OnChanged(function()
+        local Value = Toggle.Value  -- Use the Toggle object's Value directly
+        if Value then  -- Check if the toggle is on
         -- Ensure the player has a Lantern in their Backpack and equip it
-        if game.Players.LocalPlayer.Backpack:FindFirstChild("Lantern") then 
-            game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Lantern) 
-        end
+            if game.Players.LocalPlayer.Backpack:FindFirstChild("Lantern") then
+                game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Lantern)
+            end
         
         -- Optionally, check if the Lantern is already equipped
-        if game.Players.LocalPlayer.Character:FindFirstChild("Lantern") then 
+            if game.Players.LocalPlayer.Character:FindFirstChild("Lantern") then 
             -- You can add additional functionality here if needed
-        end
+            end
         
         -- Repeat this process continuously while the toggle is on
-        while Toggle.Value do  -- Continue looping as long as the toggle is true
-            for _, v in pairs(game.workspace:GetChildren()) do
-                if v.Name == "TrackGloveMissile" then
-                    local tool = game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Tool")
-                    if tool then
-                        tool:Activate()  -- Activate the currently equipped tool
-                
-                        local args = {
-                            [1] = "Hit",
-                            [2] = v,
-                        }
+            while Toggle.Value do  -- Continue looping as long as the toggle is true
+                for _, v in pairs(game.workspace:GetChildren()) do
+                    if v.Name == "TrackGloveMissile" then
+                        local tool = game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Tool")
+                        if tool then
+                            tool:Activate()  -- Activate the currently equipped tool
+                            local args = {
+                                [1] = "Hit",
+                                [2] = v,
+                            }
                 
                         -- Fire the server with arguments, ensure network is correctly referenced
-                        if game.Players.LocalPlayer.Character.Lantern and game.Players.LocalPlayer.Character.Lantern.Network then
-                            game.Players.LocalPlayer.Character.Lantern.Network:FireServer(unpack(args))
+                            if game.Players.LocalPlayer.Character.Lantern and game.Players.LocalPlayer.Character.Lantern.Network then
+                                game.Players.LocalPlayer.Character.Lantern.Network:FireServer(unpack(args))
+                            else
+                                warn("Network not found or invalid.")
+                            end
                         else
-                            warn("Network not found or invalid.")
+                            warn("No valid tool found in character.")
                         end
-                    else
-                        warn("No valid tool found in character.")
+                    end
+                end
+                wait(0.1)  -- Wait before repeating (adjust as necessary)
+            end
+        else  -- If toggle is off, you can handle anything needed when it's turned off
+            print("Tracking slap is turned off.")
+        end
+    end)
+    Options.MyToggle2:SetValue(false)  -- Start with the toggle off (optional)
+    local Toggle = Tabs.Main:AddToggle("MyToggle", {
+        Title = "Tycoon Farm",
+        Default = false
+    })
+    Toggle:OnChanged(function()
+        local Value = Toggle.Value  -- Get the current value of the toggle
+        if Value then  -- Check if the toggle is on
+        -- Loop through all descendants in the workspace
+            for _, v in pairs(workspace:GetDescendants()) do
+                if v.Name == "Click" and v:FindFirstChild("ClickDetector") then 
+                -- Start a loop that continues while the toggle is on
+                    while Toggle.Value do
+                        fireclickdetector(v.ClickDetector)  -- Fire the ClickDetector
+                        task.wait(0.1)  -- Wait a brief moment before firing again (adjust as needed)
                     end
                 end
             end
-            
-            wait(0.1)  -- Wait before repeating (adjust as necessary)
+        else
+            print("Tycoon farm is turned off.")  -- Optional: Message when toggle is off
         end
-    
-    else  -- If toggle is off, you can handle anything needed when it's turned off
-        print("Tracking slap is turned off.")
-    end
-end)
-
-Options.MyToggle2:SetValue(false)  -- Start with the toggle off (optional)
-
-
-local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Tycoon Farm", Default = false })
-
-Toggle:OnChanged(function()
-    local Value = Toggle.Value  -- Get the current value of the toggle
-
-    if Value then  -- Check if the toggle is on
-        -- Loop through all descendants in the workspace
-        for _, v in pairs(workspace:GetDescendants()) do
-            if v.Name == "Click" and v:FindFirstChild("ClickDetector") then 
-                -- Start a loop that continues while the toggle is on
-                while Toggle.Value do
-                    fireclickdetector(v.ClickDetector)  -- Fire the ClickDetector
-                    
-                    task.wait(0.1)  -- Wait a brief moment before firing again (adjust as needed)
-                end
-            end
-        end
-        
-    else  
-        print("Tycoon farm is turned off.")  -- Optional: Message when toggle is off
-    end
-end)
-
-Options.MyToggle:SetValue(false)  -- Start with the toggle off (optional)
-
-
-Tabs.Main:AddButton({
-    Title = "Full Kinetic",
-    Description = "",
-    Callback = function()
-        if game.Players.LocalPlayer.Character and 
-        game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
-       
-         local player = game.Players.LocalPlayer
+    end)
+    Options.MyToggle:SetValue(false)  -- Start with the toggle off (optional)
+    Tabs.Main:AddButton({
+        Title = "Full Kinetic",
+        Description = "",
+        Callback = function()
+            if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+                local player = game.Players.LocalPlayer
      
          -- Check if the player has the Kinetic glove
-         if player.leaderstats.Glove.Value == "Kinetic" then
-             local OGL = player.Character.HumanoidRootPart.CFrame  -- Store the current CFrame
+                if player.leaderstats.Glove.Value == "Kinetic" then
+                    local OGL = player.Character.HumanoidRootPart.CFrame  -- Store the current CFrame
              
              -- Loop to apply SelfKnockback effect
-             for i = 1, 100 do
-                 game.ReplicatedStorage.SelfKnockback:FireServer({
-                     ["Force"] = 0,
-                     ["Direction"] = Vector3.new(0, 0.01, 0)
-                 })
-                 wait(0.05)  -- Short delay to control execution speed
-             end
-         else
+                    for i = 1, 100 do
+                        game.ReplicatedStorage.SelfKnockback:FireServer({
+                            ["Force"] = 0,
+                            ["Direction"] = Vector3.new(0, 0.01, 0)
+                        })
+                        wait(0.05)  -- Short delay to control execution speed
+                    end
+                else
              -- Notify player that they need the Kinetic glove
-             game:GetService("StarterGui"):SetCore("SendNotification", {
-                 Title = "Error",
-                 Text = "Need Kinetic Glove.",
-                 Icon = "rbxassetid://7733658504",
-                 Duration = 10
-             })
-         end
-     else
+                    game:GetService("StarterGui"):SetCore("SendNotification", {
+                        Title = "Error",
+                        Text = "Need Kinetic Glove.",
+                        Icon = "rbxassetid://7733658504",
+                        Duration = 10
+                    })
+                end
+            else
          -- Notify player if character or HumanoidRootPart is missing
-         game:GetService("StarterGui"):SetCore("SendNotification", {
-             Title = "Error",
-             Text = "Character not found or not ready.",
-             Icon = "rbxassetid://7733658504",
-             Duration = 10
-         })
-     end
-     
-    end
+                game:GetService("StarterGui"):SetCore("SendNotification", {
+                    Title = "Error",
+                    Text = "Character not found or not ready.",
+                    Icon = "rbxassetid://7733658504",
+                    Duration = 10
+                })
+            end
+        end
     })
 
     local Players = game:GetService("Players")
-local PathfindingService = game:GetService("PathfindingService")
-local RunService = game:GetService("RunService")
-
-local localPlayer = Players.LocalPlayer
-local teleportPart = workspace:WaitForChild("Lobby"):WaitForChild("Teleport1")
-
-local selectedTargetName = nil
-local autoMoveEnabled = false
-local path = PathfindingService:CreatePath({
-    AgentRadius = 2,
-    AgentHeight = 5,
-    AgentCanJump = true,
-    WaypointSpacing = 2
-})
-
-local activeConnections = {}
+    local PathfindingService = game:GetService("PathfindingService")
+    local RunService = game:GetService("RunService")
+    local localPlayer = Players.LocalPlayer
+    local teleportPart = workspace:WaitForChild("Lobby"):WaitForChild("Teleport1")
+    local selectedTargetName = nil
+    local autoMoveEnabled = false
+    local path = PathfindingService:CreatePath({
+        AgentRadius = 2,
+        AgentHeight = 5,
+        AgentCanJump = true,
+        WaypointSpacing = 2
+    })
+    local activeConnections = {}
 
 -- Получить список имён игроков (без локального)
-local function getPlayerNames()
-    local names = {}
-    for _, player in ipairs(Players:GetPlayers()) do
-        if player ~= localPlayer then
-            table.insert(names, player.Name)
+    local function getPlayerNames()
+        local names = {}
+        for _, player in ipairs(Players:GetPlayers()) do
+            if player ~= localPlayer then
+                table.insert(names, player.Name)
+            end
         end
+        return names
     end
-    return names
-end
 
 -- Очистка коннекций
-local function cleanup()
-    for _, c in pairs(activeConnections) do
-        c:Disconnect()
+    local function cleanup()
+        for _, c in pairs(activeConnections) do
+            c:Disconnect()
+        end
+        activeConnections = {}
     end
-    activeConnections = {}
-end
 
 -- Следование по пути
-local function followPath(destination)
-    cleanup()
-
-    local character = localPlayer.Character
-    if not character then return end
-
-    local humanoid = character:FindFirstChildOfClass("Humanoid")
-    local rootPart = character:FindFirstChild("HumanoidRootPart")
-    if not humanoid or not rootPart then return end
-
-    path:ComputeAsync(rootPart.Position, destination.Position)
-
-    if path.Status == Enum.PathStatus.Success then
-        local waypoints = path:GetWaypoints()
-        for _, waypoint in ipairs(waypoints) do
-            if not autoMoveEnabled then break end
-
-            humanoid:MoveTo(waypoint.Position)
-            local reached = false
-
-            local connection = humanoid.MoveToFinished:Connect(function(success)
-                reached = success
-            end)
-            table.insert(activeConnections, connection)
-
-            local startTime = tick()
-            while not reached and tick() - startTime < 1 and autoMoveEnabled do
-                RunService.Heartbeat:Wait()
-            end
+    local function followPath(destination)
+        cleanup()
+        local character = localPlayer.Character
+        if not character then
+            return
         end
-    else
-        humanoid:MoveTo(destination.Position)
-    end
-end
-
--- Цикл слежения
-local function autoMoveLoop()
-    task.spawn(function()
-        while autoMoveEnabled do
-            local character = localPlayer.Character
-            local root = character and character:FindFirstChild("HumanoidRootPart")
-            local targetPlayer = Players:FindFirstChild(selectedTargetName)
-            local targetChar = targetPlayer and targetPlayer.Character
-            local targetRoot = targetChar and targetChar:FindFirstChild("HumanoidRootPart")
-
-            if root and targetRoot and teleportPart then
-                local distToTarget = (root.Position - targetRoot.Position).Magnitude
-                local distToTeleport = (root.Position - teleportPart.Position).Magnitude
-
-                if distToTarget < distToTeleport then
-                    followPath(targetRoot)
-                else
-                    followPath(teleportPart)
+        local humanoid = character:FindFirstChildOfClass("Humanoid")
+        local rootPart = character:FindFirstChild("HumanoidRootPart")
+        if not humanoid or not rootPart then
+            return
+        end
+        path:ComputeAsync(rootPart.Position, destination.Position)
+        if path.Status == Enum.PathStatus.Success then
+            local waypoints = path:GetWaypoints()
+            for _, waypoint in ipairs(waypoints) do
+                if not autoMoveEnabled then
+                    break
+                end
+                humanoid:MoveTo(waypoint.Position)
+                local reached = false
+                local connection = humanoid.MoveToFinished:Connect(function(success)
+                    reached = success
+                end)
+                table.insert(activeConnections, connection)
+                local startTime = tick()
+                while not reached and tick() - startTime < 1 and autoMoveEnabled do
+                    RunService.Heartbeat:Wait()
                 end
             end
-
-            task.wait(0.25)
+        else
+            humanoid:MoveTo(destination.Position)
         end
-        cleanup()
-    end)
-end
+    end
+
+-- Цикл слежения
+    local function autoMoveLoop()
+        task.spawn(function()
+            while autoMoveEnabled do
+                local character = localPlayer.Character
+                local root = character and character:FindFirstChild("HumanoidRootPart")
+                local targetPlayer = Players:FindFirstChild(selectedTargetName)
+                local targetChar = targetPlayer and targetPlayer.Character
+                local targetRoot = targetChar and targetChar:FindFirstChild("HumanoidRootPart")
+                if root and targetRoot and teleportPart then
+                    local distToTarget = (root.Position - targetRoot.Position).Magnitude
+                    local distToTeleport = (root.Position - teleportPart.Position).Magnitude
+                    if distToTarget < distToTeleport then
+                        followPath(targetRoot)
+                    else
+                        followPath(teleportPart)
+                    end
+                end
+                task.wait(0.25)
+            end
+            cleanup()
+        end)
+    end
 
 -- UI элементы (Fluent)
-local Dropdown = Tabs.Mstr:AddDropdown("TargetPlayerDropdown", {
-    Title = "Walk To Player",
-    Values = getPlayerNames(),
-    Multi = false,
-    Default = 1,
-})
-
-local Toggle = Tabs.Mstr:AddToggle("AutoMoveToggle", {
-    Title = "*WALK* Selected Player",
-    Default = false,
-})
+    local Dropdown = Tabs.Mstr:AddDropdown("TargetPlayerDropdown", {
+        Title = "Walk To Player",
+        Values = getPlayerNames(),
+        Multi = false,
+        Default = 1,
+    })
+    local Toggle = Tabs.Mstr:AddToggle("AutoMoveToggle", {
+        Title = "*WALK* Selected Player",
+        Default = false,
+    })
 
 -- Обновление дропдауна при изменении игроков
-local function refreshDropdown()
-    Dropdown:SetValues(getPlayerNames())
-end
-
-Players.PlayerAdded:Connect(refreshDropdown)
-Players.PlayerRemoving:Connect(refreshDropdown)
+    local function refreshDropdown()
+        Dropdown:SetValues(getPlayerNames())
+    end
+    Players.PlayerAdded:Connect(refreshDropdown)
+    Players.PlayerRemoving:Connect(refreshDropdown)
 
 -- Выбор цели
-Dropdown:OnChanged(function(name)
-    selectedTargetName = name
-end)
+    Dropdown:OnChanged(function(name)
+        selectedTargetName = name
+    end)
 
 -- Активация перемещения
-Toggle:OnChanged(function(state)
-    autoMoveEnabled = state
-    if state and selectedTargetName then
-        autoMoveLoop()
-    else
-        cleanup()
-    end
-end)
+    Toggle:OnChanged(function(state)
+        autoMoveEnabled = state
+        if state and selectedTargetName then
+            autoMoveLoop()
+        else
+            cleanup()
+        end
+    end)
 
 -- Установка значения по умолчанию
-Dropdown:SetValue(getPlayerNames()[1] or "")
-Toggle:SetValue(false)
+    Dropdown:SetValue(getPlayerNames()[1] or "")
+    Toggle:SetValue(false)
 
     Tabs.Settings:AddButton({
         Title = "Found Low Server",
         Description = "Idk maybe working",
         Callback = function()
-
-local Http = game:GetService("HttpService")
-local TPS = game:GetService("TeleportService")
-local Api = "https://games.roblox.com/v1/games/"
-
-local _place = game.PlaceId
-local _servers = Api.._place.."/servers/Public?sortOrder=Asc&limit=100"
-function ListServers(cursor)
-  local Raw = game:HttpGet(_servers .. ((cursor and "&cursor="..cursor) or ""))
-  return Http:JSONDecode(Raw)
-end
-
-local Server, Next; repeat
-  local Servers = ListServers(Next)
-  Server = Servers.data[1]
-  Next = Servers.nextPageCursor
-until Server
-
-TPS:TeleportToPlaceInstance(_place,Server.id,game.Players.LocalPlayer)
+            local Http = game:GetService("HttpService")
+            local TPS = game:GetService("TeleportService")
+            local Api = "https://games.roblox.com/v1/games/"
+            local _place = game.PlaceId
+            local _servers = Api .. _place .. "/servers/Public?sortOrder=Asc&limit=100"
+            function ListServers(cursor)
+                local Raw = game:HttpGet(_servers .. ((cursor and "&cursor=" .. cursor) or ""))
+                return Http:JSONDecode(Raw)
             end
-        })
+            local Server, Next;
+            repeat
+                local Servers = ListServers(Next)
+                Server = Servers.data[1]
+                Next = Servers.nextPageCursor
+            until Server
+            TPS:TeleportToPlaceInstance(_place, Server.id, game.Players.LocalPlayer)
+        end
+    })
 
 
     Tabs.Msc:AddButton({
@@ -1089,396 +955,421 @@ TPS:TeleportToPlaceInstance(_place,Server.id,game.Players.LocalPlayer)
         Description = "Join for see update news",
         Callback = function()
             setclipboard('https://discord.gg/uaJRzGmGBH')
+        end
+    })
+    Tabs.Telp:AddParagraph({
+        Title = "Teleport",
+        Content = ""
+    })
+    Tabs.Badgs:AddButton({
+        Title = "Admin Glove",
+        Description = "",
+        Callback = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/AlexCode2122/Daa/main/Admin", true))();
+        end
+    })
+    Tabs.Badgs:AddButton({
+        Title = "Lamp Glove",
+        Description = "Need ZZZZ glove",
+        Callback = function()
+            if game.Players.LocalPlayer.leaderstats.Glove.Value == "ZZZZZZZ" then
+                for i = 1, 5 do
+                    game:GetService("ReplicatedStorage").nightmare:FireServer("LightBroken")
+                end
+            else
+                game:GetService("StarterGui"):SetCore("SendNotification", {
+                    Title = "Error",
+                    Text = "Need ZZZZZZZ Glove.",
+                    Icon = "rbxassetid://7733658504",
+                    Duration = 10
+                })
             end
-        })
-
-			Tabs.Telp:AddParagraph({
-				Title = "Teleport",
-				Content = ""
-			})
-
-            Tabs.Badgs:AddButton({
-				Title = "Admin Glove",
-				Description = "",
-				Callback = function()
-                    loadstring(game:HttpGet("https://raw.githubusercontent.com/AlexCode2122/Daa/main/Admin",true))();
-					end
-				})
-            
-                Tabs.Badgs:AddButton({
-                    Title = "Lamp Glove",
-                    Description = "Need ZZZZ glove",
-                    Callback = function()
-                        if game.Players.LocalPlayer.leaderstats.Glove.Value == "ZZZZZZZ" then
-                            for i = 1,5 do
-                                game:GetService("ReplicatedStorage").nightmare:FireServer("LightBroken")
-                            end
-                        else
-                            game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Error",Text = "Need ZZZZZZZ Glove.",Icon = "rbxassetid://7733658504",Duration = 10})
-                        end
-                        end
-                    })
-
-                    Tabs.Badgs:AddButton({
-                        Title = "IceSkate Glove",
-                        Description = "",
-                        Callback = function()
-                            loadstring(game:HttpGet("https://raw.githubusercontent.com/AlexCode2122/IceSkate/main/Skate",true))();
-                            end
-                        })
+        end
+    })
+    Tabs.Badgs:AddButton({
+        Title = "IceSkate Glove",
+        Description = "",
+        Callback = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/AlexCode2122/IceSkate/main/Skate", true))();
+        end
+    })
 
 
 
 -- Toggle for Time Stop
-local Toggle = Tabs.Ant:AddToggle("MyToggle", {Title = "Time Stop", Default = false})
-
-Toggle:OnChanged(function()
-    local Value = Toggle.Value  -- Get the current value of the toggle
-    getgenv().antitssb = Value  -- Set the global variable based on the toggle state
-
-    if Value then  -- If the toggle is ON
-        while getgenv().antitssb do
+    local Toggle = Tabs.Ant:AddToggle("MyToggle", {
+        Title = "Time Stop",
+        Default = false
+    })
+    Toggle:OnChanged(function()
+        local Value = Toggle.Value  -- Get the current value of the toggle
+        getgenv().antitssb = Value  -- Set the global variable based on the toggle state
+        if Value then  -- If the toggle is ON
+            while getgenv().antitssb do
+                for _, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+                    if v:IsA("Part") then
+                        v.Anchored = true  -- Anchor parts when toggled on
+                    end
+                end
+                task.wait(0.1)  -- Wait for a short duration before repeating
+            end
+        else
             for _, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-                if v:IsA("Part") then  
-                    v.Anchored = true  -- Anchor parts when toggled on
+                if v:IsA("Part") then
+                    v.Anchored = false  -- Unanchor parts when toggled off (optional)
                 end
             end
-            task.wait(0.1)  -- Wait for a short duration before repeating
-        end
-    else
-        for _, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-            if v:IsA("Part") then
-                v.Anchored = false  -- Unanchor parts when toggled off (optional)
-            end
-        end
         
         -- If you want to reset character position or other properties, do it here.
-    end
-end)
-
-Options.MyToggle:SetValue(false)  -- Start with the toggle off (optional)
+        end
+    end)
+    Options.MyToggle:SetValue(false)  -- Start with the toggle off (optional)
 
 -- Toggle for Anti Ice
-local Toggle = Tabs.Ant:AddToggle("AntiIceToggle", {Title = "Anti Ice", Default = false })
-
-Toggle:OnChanged(function()
-    local Value = Toggle.Value  -- Get the current value of the toggle
-    getgenv().antiicesb = Value  -- Set the global variable based on the toggle state
-
-    if Value then  
-        while getgenv().antiicesb do
-            for _, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-                if v.Name == "Icecube" then
-                    v:Destroy()  -- Destroy any Icecube found in character's children
+    local Toggle = Tabs.Ant:AddToggle("AntiIceToggle", {
+        Title = "Anti Ice",
+        Default = false
+    })
+    Toggle:OnChanged(function()
+        local Value = Toggle.Value  -- Get the current value of the toggle
+        getgenv().antiicesb = Value  -- Set the global variable based on the toggle state
+        if Value then
+            while getgenv().antiicesb do
+                for _, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+                    if v.Name == "Icecube" then
+                        v:Destroy()  -- Destroy any Icecube found in character's children
+                    end
                 end
-            end
-            
-            task.wait(0.5)  -- Added wait to prevent a tight loop
+                task.wait(0.5)  -- Added wait to prevent a tight loop
             
             -- Ensure that humanoid settings are only changed while toggled on safely.
-            local humanoid = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
-            if humanoid then 
-                humanoid.PlatformStand = false 
-                humanoid.AutoRotate = true 
-            end 
-        end
+                local humanoid = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+                if humanoid then
+                    humanoid.PlatformStand = false
+                    humanoid.AutoRotate = true
+                end
+            end
         
         -- Optionally, reset properties when toggled off.
-    else 
-        local humanoid = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
-        if humanoid then 
-            humanoid.PlatformStand = false 
-        end 
-    end  
-end)
-
-Options.MyToggle:SetValue(false)  -- Start with the toggle off (optional)
-
-local Toggle = Tabs.Ant:AddToggle("MyToggle", {Title = "Knockoff", Default = false })
-
-Toggle:OnChanged(function()
-    local Value = Toggle.Value  -- Get the current value of the toggle
-    getgenv().Antiknokoffsb = Value  -- Set the global variable based on the toggle state
-
-    if Value then  -- Only execute if the toggle is ON
-        while getgenv().Antiknokoffsb do
-            if game.Workspace.CurrentCamera and 
-               game.Players.LocalPlayer.Character and 
-               game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid") and 
-               game.Workspace.CurrentCamera.CameraSubject ~= game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid") and 
-               game.Workspace.CurrentCamera.CameraSubject == game.Workspace:FindFirstChild(game.Players.LocalPlayer.Name.."'s_falsehead") then
-                
-                game.Workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+        else
+            local humanoid = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+            if humanoid then
+                humanoid.PlatformStand = false
             end
-            task.wait(0.1)  -- Add wait to prevent tight looping
         end
-    end
-end)
-
-Options.MyToggle:SetValue(false)  -- Start with the toggle off (optional)
-
-local Toggle = Tabs.Ant:AddToggle("MyToggle", {Title = "Megarock/Custom", Default = false })
-
-Toggle:OnChanged(function()
-    local Value = Toggle.Value  -- Get the current value of the toggle
-    getgenv().antimegarocksb = Value  -- Set the global variable based on the toggle state
-
-    if Value then  -- Only execute if the toggle is ON
-        while getgenv().antimegarocksb do
-            for _, player in pairs(game.Players:GetChildren()) do
-                if player.Character and player.Character:FindFirstChild("rock") then
-                    local rock = player.Character:FindFirstChild("rock")
-                    rock.CanTouch = false  -- Disable CanTouch property for the rock
-                    rock.CanQuery = false   -- Disable CanQuery property for the rock
+    end)
+    Options.MyToggle:SetValue(false)  -- Start with the toggle off (optional)
+    local Toggle = Tabs.Ant:AddToggle("MyToggle", {
+        Title = "Knockoff",
+        Default = false
+    })
+    Toggle:OnChanged(function()
+        local Value = Toggle.Value  -- Get the current value of the toggle
+        getgenv().Antiknokoffsb = Value  -- Set the global variable based on the toggle state
+        if Value then  -- Only execute if the toggle is ON
+            while getgenv().Antiknokoffsb do
+                if game.Workspace.CurrentCamera and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid") and game.Workspace.CurrentCamera.CameraSubject ~= game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid") and game.Workspace.CurrentCamera.CameraSubject == game.Workspace:FindFirstChild(game.Players.LocalPlayer.Name .. "'s_falsehead") then
+                    game.Workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
                 end
+                task.wait(0.1)  -- Add wait to prevent tight looping
             end
-            task.wait(0.1)  -- Add a wait to prevent a tight loop
         end
-    end
-end)
-
-Options.MyToggle:SetValue(false)  -- Start with the toggle off (optional)
-
-local Toggle = Tabs.Ant:AddToggle("MyToggle", {Title = "Cube of death", Default = false })
-
-Toggle:OnChanged(function()
-    local Value = Toggle.Value  -- Get the current value of the toggle
-
-    if Value then  -- Only execute if the toggle is ON
-        workspace.Arena.CubeOfDeathArea["the cube of death(i heard it kills)"].CanTouch = false
-    else  -- If the toggle is OFF
-        workspace.Arena.CubeOfDeathArea["the cube of death(i heard it kills)"].CanTouch = true
-    end
-end)
-
-Options.MyToggle:SetValue(false)  -- Start with the toggle off (optional)
+    end)
+    Options.MyToggle:SetValue(false)  -- Start with the toggle off (optional)
+    local Toggle = Tabs.Ant:AddToggle("MyToggle", {
+        Title = "Megarock/Custom",
+        Default = false
+    })
+    Toggle:OnChanged(function()
+        local Value = Toggle.Value  -- Get the current value of the toggle
+        getgenv().antimegarocksb = Value  -- Set the global variable based on the toggle state
+        if Value then  -- Only execute if the toggle is ON
+            while getgenv().antimegarocksb do
+                for _, player in pairs(game.Players:GetChildren()) do
+                    if player.Character and player.Character:FindFirstChild("rock") then
+                        local rock = player.Character:FindFirstChild("rock")
+                        rock.CanTouch = false  -- Disable CanTouch property for the rock
+                        rock.CanQuery = false   -- Disable CanQuery property for the rock
+                    end
+                end
+                task.wait(0.1)  -- Add a wait to prevent a tight loop
+            end
+        end
+    end)
+    Options.MyToggle:SetValue(false)  -- Start with the toggle off (optional)
+    local Toggle = Tabs.Ant:AddToggle("MyToggle", {
+        Title = "Cube of death",
+        Default = false
+    })
+    Toggle:OnChanged(function()
+        local Value = Toggle.Value  -- Get the current value of the toggle
+        if Value then  -- Only execute if the toggle is ON
+            workspace.Arena.CubeOfDeathArea["the cube of death(i heard it kills)"].CanTouch = false
+        else  -- If the toggle is OFF
+            workspace.Arena.CubeOfDeathArea["the cube of death(i heard it kills)"].CanTouch = true
+        end
+    end)
+    Options.MyToggle:SetValue(false)  -- Start with the toggle off (optional)
 
 -- Infinity Alchemist Ingredients Button
-Tabs.Main:AddButton({
-    Title = "Infinity Alchemist Ingredients",
-    Description = "Get an infinite amount of alchemist ingredients.",
-    Callback = function()
-        if game.Players.LocalPlayer.leaderstats.Glove.Value == "Alchemist" then
+    Tabs.Main:AddButton({
+        Title = "Infinity Alchemist Ingredients",
+        Description = "Get an infinite amount of alchemist ingredients.",
+        Callback = function()
+            if game.Players.LocalPlayer.leaderstats.Glove.Value == "Alchemist" then
             -- List of ingredients to add
-            local items = {
-                "Blood Rose",
-                "Jade Stone",
-                "Plane Flower",
-                "Lamp Grass",
-                "Winter Rose",
-                "Autumn Sprout",
-                "Dire Flower",
-                "Dark Root",
-                "Fire Flower",
-                "Mushroom",
-                "Hazel Lily",
-                "Cake Mix",
-                "Wild Vine"
-            }
-
-            for i = 1, 200 do  -- Repeat the addition process 200 times
-                for _, item in ipairs(items) do  -- Iterate over each item in the list
-                    local args = {
-                        [1] = "AddItem",
-                        [2] = item
-                    }
-                    
-                    game:GetService("ReplicatedStorage"):WaitForChild("AlchemistEvent"):FireServer(unpack(args))  -- Fire the event with the item
-                    task.wait(0.05)  -- Optional wait time between item additions to prevent spamming events too quickly.
+                local items = {
+                    "Blood Rose",
+                    "Jade Stone",
+                    "Plane Flower",
+                    "Lamp Grass",
+                    "Winter Rose",
+                    "Autumn Sprout",
+                    "Dire Flower",
+                    "Dark Root",
+                    "Fire Flower",
+                    "Mushroom",
+                    "Hazel Lily",
+                    "Cake Mix",
+                    "Wild Vine"
+                }
+                for i = 1, 200 do  -- Repeat the addition process 200 times
+                    for _, item in ipairs(items) do  -- Iterate over each item in the list
+                        local args = {
+                            [1] = "AddItem",
+                            [2] = item
+                        }
+                        game:GetService("ReplicatedStorage"):WaitForChild("AlchemistEvent"):FireServer(unpack(args))  -- Fire the event with the item
+                        task.wait(0.05)  -- Optional wait time between item additions to prevent spamming events too quickly.
+                    end
                 end
-            end
             
             -- Notify after successfully starting the addition process
-            game:GetService("StarterGui"):SetCore("SendNotification", {
-                Title = "Success!",
-                Text = "Started adding infinite ingredients.",
-                Icon = "rbxassetid://7733658504",
-                Duration = 5
-            })
-        else
-            game:GetService("StarterGui"):SetCore("SendNotification", {
-                Title = "Error",
-                Text = "Need Alchemist Glove.",
-                Icon = "rbxassetid://7733658504",
-                Duration = 10
-            })
+                game:GetService("StarterGui"):SetCore("SendNotification", {
+                    Title = "Success!",
+                    Text = "Started adding infinite ingredients.",
+                    Icon = "rbxassetid://7733658504",
+                    Duration = 5
+                })
+            else
+                game:GetService("StarterGui"):SetCore("SendNotification", {
+                    Title = "Error",
+                    Text = "Need Alchemist Glove.",
+                    Icon = "rbxassetid://7733658504",
+                    Duration = 10
+                })
+            end
         end
-    end
-})
+    })
 
 ---------------------------------------------------------------------- ////////////// MASTERY
 
 -- Добавляем Paragraph (правильный метод)
-Tabs.Mstr:AddParagraph({
-    Title = "Glovel Mastery",
-    Content = "1st Glovel Mastery features"  -- Можно оставить пустым, если не нужно
-})
-
-local Toggle = Tabs.Mstr:AddToggle("MyToggle", {Title = "Fast *DIG* quest", Default = false })
-
-local isRunning = false 
-
-Toggle:OnChanged(function(State)
-    if State then
-
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(
-            2461.50464, 243.291565, -4546.78467, 
-            0.966821849, -0.00649187574, 0.255369186, 
-            -1.00234743e-09, 0.999677002, 0.0254133251, 
-            -0.255451679, -0.0245701578, 0.966509581
-        )
-
-        if not isRunning then
-            isRunning = true
-            coroutine.wrap(function()
-                for i = 1, 370 do
-                    if not isRunning then break end  -- Выход, если Toggle выключен
-                    game:GetService("ReplicatedStorage"):WaitForChild("GlovelFunc"):InvokeServer()
-                    task.wait()
-                end
-                isRunning = false 
-            end)()
+    Tabs.Mstr:AddParagraph({
+        Title = "Glovel Mastery",
+        Content = "1st Glovel Mastery features"  -- Можно оставить пустым, если не нужно
+    })
+    local Toggle = Tabs.Mstr:AddToggle("MyToggle", {
+        Title = "Fast *DIG* quest",
+        Default = false
+    })
+    local isRunning = false
+    Toggle:OnChanged(function(State)
+        if State then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2461.50464, 243.291565, - 4546.78467, 0.966821849, - 0.00649187574, 0.255369186, - 1.00234743e-09, 0.999677002, 0.0254133251, - 0.255451679, - 0.0245701578, 0.966509581)
+            if not isRunning then
+                isRunning = true
+                coroutine.wrap(function()
+                    for i = 1, 370 do
+                        if not isRunning then
+                            break
+                        end  -- Выход, если Toggle выключен
+                        game:GetService("ReplicatedStorage"):WaitForChild("GlovelFunc"):InvokeServer()
+                        task.wait()
+                    end
+                    isRunning = false
+                end)()
+            end
+        else
+            isRunning = false
         end
-    else
-
-        isRunning = false
-    end
-    print("Toggle changed:", State)
-end)
-
-Options.MyToggle:SetValue(false)
+        print("Toggle changed:", State)
+    end)
+    Options.MyToggle:SetValue(false)
 
 ----//////////////////////////// Only for hahaha - Every time critical hit
 
 -- Создаем элементы интерфейса
-local Toggle = Tabs.Mstr:AddToggle("HitToggle", {
-    Title = "Auto-Critical Hit",
-    Default = false
-})
-
-local Dropdown = Tabs.Msc:AddDropdown("PlayerDropdown", {
-    Title = "Select Player",
-    Values = {},
-    Multi = false,
-    Default = nil
-})
+    local Toggle = Tabs.Mstr:AddToggle("HitToggle", {
+        Title = "Auto-Critical Hit",
+        Default = false
+    })
+    local Dropdown = Tabs.Msc:AddDropdown("PlayerDropdown", {
+        Title = "Select Player",
+        Values = {},
+        Multi = false,
+        Default = nil
+    })
 
 -- Функция для обновления списка игроков
-local function updatePlayerList()
-    local players = {}
-    for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
-        if player ~= game.Players.LocalPlayer then
-            table.insert(players, player.Name)
+    local function updatePlayerList()
+        local players = {}
+        for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
+            if player ~= game.Players.LocalPlayer then
+                table.insert(players, player.Name)
+            end
+        end
+        Dropdown:SetValues(players)
+        if # players > 0 and not Dropdown.Value then
+            Dropdown:SetValue(players[1])
         end
     end
-    Dropdown:SetValues(players)
-    if #players > 0 and not Dropdown.Value then
-        Dropdown:SetValue(players[1])
-    end
-end
 
 -- Инициализация списка игроков
-updatePlayerList()
-game:GetService("Players").PlayerAdded:Connect(updatePlayerList)
-game:GetService("Players").PlayerRemoving:Connect(updatePlayerList)
+    updatePlayerList()
+    game:GetService("Players").PlayerAdded:Connect(updatePlayerList)
+    game:GetService("Players").PlayerRemoving:Connect(updatePlayerList)
 
 -- Основная логика
-local hitLoop
-Toggle:OnChanged(function(state)
-    if state then
-        hitLoop = task.spawn(function()
-            while Toggle.Value do
-                local selectedPlayer = Dropdown.Value
-                if selectedPlayer then
-                    local player = game:GetService("Players"):FindFirstChild(selectedPlayer)
-                    if player and player.Character then
-                        local head = player.Character:FindFirstChild("Head")
-                        if head then
-                            local args = {head, true}
-                            game:GetService("ReplicatedStorage"):WaitForChild("GeneralHit"):FireServer(unpack(args))
+    local hitLoop
+    Toggle:OnChanged(function(state)
+        if state then
+            hitLoop = task.spawn(function()
+                while Toggle.Value do
+                    local selectedPlayer = Dropdown.Value
+                    if selectedPlayer then
+                        local player = game:GetService("Players"):FindFirstChild(selectedPlayer)
+                        if player and player.Character then
+                            local head = player.Character:FindFirstChild("Head")
+                            if head then
+                                local args = {
+                                    head,
+                                    true
+                                }
+                                game:GetService("ReplicatedStorage"):WaitForChild("GeneralHit"):FireServer(unpack(args))
+                            end
                         end
                     end
+                    task.wait(0.5)
                 end
-                task.wait(0.5)
-            end
-        end)
-    elseif hitLoop then
-        task.cancel(hitLoop)
-        hitLoop = nil
-    end
-    print("Toggle changed:", state)
-end)
+            end)
+        elseif hitLoop then
+            task.cancel(hitLoop)
+            hitLoop = nil
+        end
+        print("Toggle changed:", state)
+    end)
 
 -- Инициализация (для Fluent Options не требуется)
 ------------------------------////////////////////////////////////////////////////////////
 
 
 -- Создаем элементы интерфейса
-local Toggle = Tabs.Mstr:AddToggle("HitToggle", {
-    Title = "Auto Hit *semi-legit*",
-    Default = false
-})
-
-local Dropdown = Tabs.Mstr:AddDropdown("PlayerDropdown", {
-    Title = "Select Player",
-    Values = {},
-    Multi = false,
-    Default = nil
-})
+    local Toggle = Tabs.Mstr:AddToggle("HitToggle", {
+        Title = "Auto Hit *semi-legit*",
+        Default = false
+    })
+    local Dropdown = Tabs.Mstr:AddDropdown("PlayerDropdown", {
+        Title = "Select Player",
+        Values = {},
+        Multi = false,
+        Default = nil
+    })
 
 -- Функция для обновления списка игроков
-local function updatePlayerList()
-    local players = {}
-    for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
-        if player ~= game.Players.LocalPlayer then
-            table.insert(players, player.Name)
+    local function updatePlayerList()
+        local players = {}
+        for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
+            if player ~= game.Players.LocalPlayer then
+                table.insert(players, player.Name)
+            end
+        end
+        Dropdown:SetValues(players)
+        if # players > 0 and not Dropdown.Value then
+            Dropdown:SetValue(players[1])
         end
     end
-    Dropdown:SetValues(players)
-    if #players > 0 and not Dropdown.Value then
-        Dropdown:SetValue(players[1])
-    end
-end
 
 -- Инициализация списка игроков
-updatePlayerList()
-game:GetService("Players").PlayerAdded:Connect(updatePlayerList)
-game:GetService("Players").PlayerRemoving:Connect(updatePlayerList)
+    updatePlayerList()
+    game:GetService("Players").PlayerAdded:Connect(updatePlayerList)
+    game:GetService("Players").PlayerRemoving:Connect(updatePlayerList)
 
 -- Основная логика
-local hitLoop
-Toggle:OnChanged(function(state)
-    if state then
-        hitLoop = task.spawn(function()
-            while Toggle.Value do
-                local selectedPlayer = Dropdown.Value
-                if selectedPlayer then
-                    local player = game:GetService("Players"):FindFirstChild(selectedPlayer)
-                    if player and player.Character then
-                        local head = player.Character:FindFirstChild("Torso")
-                        if head then
-                            local args = {head, true}
-                            game:GetService("ReplicatedStorage"):WaitForChild("GeneralHit"):FireServer(unpack(args))
+    local hitLoop
+    Toggle:OnChanged(function(state)
+        if state then
+            hitLoop = task.spawn(function()
+                while Toggle.Value do
+                    local selectedPlayer = Dropdown.Value
+                    if selectedPlayer then
+                        local player = game:GetService("Players"):FindFirstChild(selectedPlayer)
+                        if player and player.Character then
+                            local torso = player.Character:FindFirstChild("Torso")
+                            if torso then
+                                local args = {
+                                    torso,
+                                    true
+                                }
+                                game:GetService("ReplicatedStorage"):WaitForChild("GeneralHit"):FireServer(unpack(args))
+                            end
                         end
                     end
+                    task.wait(0.5)
                 end
-                task.wait(0.5)
+            end)
+        elseif hitLoop then
+            task.cancel(hitLoop)
+            hitLoop = nil
+        end
+        print("Toggle changed:", state)
+    end)
+------------//////////////////////////////////////////////////////// ROB MASTERY
+
+    Tabs.Mstr:AddParagraph({
+        Title = "Rob mastery",
+        Content = "Rob Mastery features"  -- Можно оставить пустым, если не нужно
+    })
+
+    local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Auto Rob", Default = false })
+
+local function teleportAndRob()
+    -- Телепортация
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2461.50464, 243.291565, -4546.78467, 0.966821849, -0.00649187574, 0.255369186, -1.00234743e-09, 0.999677002, 0.0254133251, -0.255451679, -0.0245701578, 0.966509581)
+    
+    -- Отправка RPC
+    local args = {false}
+    game:GetService("ReplicatedStorage"):WaitForChild("rob"):FireServer(unpack(args))
+end
+
+local running = false
+local loopThread = nil
+
+Toggle:OnChanged(function(value)
+    if value then
+        running = true
+        loopThread = task.spawn(function()
+            while running do
+                teleportAndRob()
+                task.wait(16) -- Ждем 16 секунд перед повторением
             end
         end)
-    elseif hitLoop then
-        task.cancel(hitLoop)
-        hitLoop = nil
+    else
+        running = false
+        if loopThread then
+            task.cancel(loopThread)
+            loopThread = nil
+        end
     end
-    print("Toggle changed:", state)
 end)
 
+Options.MyToggle:SetValue(false)
 
 ------/////////////////////////////////////////////////////////
-
-Tabs.Mstr:AddParagraph({
-    Title = "Bus mastery",
-    Content = "Bus Mastery features"  -- Можно оставить пустым, если не нужно
-})
+    Tabs.Mstr:AddParagraph({
+        Title = "Bus mastery",
+        Content = "Bus Mastery features"  -- Можно оставить пустым, если не нужно
+    })
 
 -- local Toggle = Tabs.Main:AddToggle("BusTeleportToggle", {
 --     Title = "Teleport To Bus",
@@ -1530,16 +1421,13 @@ Tabs.Mstr:AddParagraph({
 -- if not Options then Options = {} end
 -- Options.BusTeleportToggle = {Value = false}
 -- Options.BusTeleportToggle:SetValue(false)
-
-
-
-			Tabs.Telp:AddButton({
-				Title = "SafeSpot",
-				Description = "",
-				Callback = function()
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2461.50464, 243.291565, -4546.78467, 0.966821849, -0.00649187574, 0.255369186, -1.00234743e-09, 0.999677002, 0.0254133251, -0.255451679, -0.0245701578, 0.966509581)
-					end
-				})
+    Tabs.Telp:AddButton({
+        Title = "SafeSpot",
+        Description = "",
+        Callback = function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2461.50464, 243.291565, - 4546.78467, 0.966821849, - 0.00649187574, 0.255369186, - 1.00234743e-09, 0.999677002, 0.0254133251, - 0.255451679, - 0.0245701578, 0.966509581)
+        end
+    })
 
                 --Tabs.Hlw:AddButton({
                  --   Title = "Candy AutoFarm",
@@ -1548,16 +1436,13 @@ Tabs.Mstr:AddParagraph({
                --         loadstring(game:HttpGet("https://pastebin.com/raw/NFCgGkfQ",true))()
              --           end
              --       })
-
-                
-
-				Tabs.Telp:AddButton({
-					Title = "Cannon island",
-					Description = "",
-					Callback = function()
-						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(257.620972, 35.9974861, 198.8535, 0.788386106, 0.045268368, -0.613512933, -8.81827944e-09, 0.997288942, 0.0735854656, 0.615180731, -0.0580137558, 0.786248744)
-						end
-					})
+    Tabs.Telp:AddButton({
+        Title = "Cannon island",
+        Description = "",
+        Callback = function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(257.620972, 35.9974861, 198.8535, 0.788386106, 0.045268368, - 0.613512933, - 8.81827944e-09, 0.997288942, 0.0735854656, 0.615180731, - 0.0580137558, 0.786248744)
+        end
+    })
 
                    -- local InputValue = ""  -- Переменная для хранения значения из Input
 
@@ -1621,24 +1506,21 @@ Tabs.Mstr:AddParagraph({
                            -- createSnowyPart()  -- Вызов функции для создания снежной части
                       --  end
                  --   })
-                    
-
-					Tabs.Telp:AddButton({
-						Title = "Slapple Island",
-						Description = "",
-						Callback = function()
-							game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Arena.island5.Union.CFrame
-							end
-						})
-
-                      Tabs.Telp:AddButton({
-                        Title = "Moai Island",
-                      Description = "",
-                      Callback = function()
+    Tabs.Telp:AddButton({
+        Title = "Slapple Island",
+        Description = "",
+        Callback = function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Arena.island5.Union.CFrame
+        end
+    })
+    Tabs.Telp:AddButton({
+        Title = "Moai Island",
+        Description = "",
+        Callback = function()
                      -- Телепорт на остров Моаи (укажите нужные координаты)
-                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0, 0, 0) -- Замените на реальные координаты
-                             end
-                            })
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0, 0, 0) -- Замените на реальные координаты
+        end
+    })
 
 
 							
@@ -1648,36 +1530,31 @@ Tabs.Mstr:AddParagraph({
 	-- InterfaceManager (Allows you to have a interface managment system)
 
 	-- Hand the library over to our managers
-	SaveManager:SetLibrary(Fluent)
-	InterfaceManager:SetLibrary(Fluent)
+    SaveManager:SetLibrary(Fluent)
+    InterfaceManager:SetLibrary(Fluent)
 
 	-- Ignore keys that are used by ThemeManager.
 	-- (we dont want configs to save themes, do we?)
-	SaveManager:IgnoreThemeSettings()
+    SaveManager:IgnoreThemeSettings()
 
 	-- You can add indexes of elements the save manager should ignore
-	SaveManager:SetIgnoreIndexes({})
+    SaveManager:SetIgnoreIndexes({})
 
 	-- use case for doing it this way:
 	-- a script hub could have themes in a global folder
 	-- and game configs in a separate folder per game
-	InterfaceManager:SetFolder("FluentScriptHub")
-	SaveManager:SetFolder("FluentScriptHub/specific-game")
-
-	InterfaceManager:BuildInterfaceSection(Tabs.Settings)
-	SaveManager:BuildConfigSection(Tabs.Settings)
-
-
-	Window:SelectTab(1)
-
-	Fluent:Notify({
-		Title = "Rebellion hub loaded!",
-		Content = "Good luck!",
-		Duration = 4
-	})
+    InterfaceManager:SetFolder("FluentScriptHub")
+    SaveManager:SetFolder("FluentScriptHub/specific-game")
+    InterfaceManager:BuildInterfaceSection(Tabs.Settings)
+    SaveManager:BuildConfigSection(Tabs.Settings)
+    Window:SelectTab(1)
+    Fluent:Notify({
+        Title = "Rebellion hub loaded!",
+        Content = "Good luck!",
+        Duration = 4
+    })
 
 	-- You can use the SaveManager:LoadAutoloadConfig() to load a config
 	-- which has been marked to be one that auto loads!
-	SaveManager:LoadAutoloadConfig()
+    SaveManager:LoadAutoloadConfig()
 end
-
