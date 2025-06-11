@@ -1331,7 +1331,7 @@ do
         Content = "Rob Mastery features. Rob *1* stud SEMI-RAGE"  -- Можно оставить пустым, если не нужно
     })
 
-    local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "1 Rob Stud Quest", Default = false })
+    local Toggle = Tabs.Mstr:AddToggle("MyToggle", {Title = "1 Rob Stud Quest", Default = false })
 
 local function teleportAndRob()
     -- Телепортация
@@ -1376,31 +1376,24 @@ for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
 end
 
 local PlayerDropdown = Tabs.Mstr:AddDropdown("PlayerDropdown", {
-    Title = "Select Player",
+    Title = "Выберите игрока",
     Values = playerNames,
     Multi = false,
     Default = 1,
 })
 
 PlayerDropdown:OnChanged(function(Value)
-    print("player: ", Value)
+    print("Выбран игрок:", Value)
 end)
 
 -- Создаем переключатель для телепортации к игроку
-local TeleportToggle = Tabs.Main:AddToggle("TeleportToggle", {
-    Title = "Teleport To Rob",
+local TeleportToggle = Tabs.Mstr:AddToggle("TeleportToggle", {
+    Title = "Телепортироваться к игроку",
     Default = false
 })
 
 local teleporting = false
-local teleportThread = nil
-
-local function teleportToPlayer(playerName)
-    local targetPlayer = game:GetService("Players"):FindFirstChild(playerName)
-    if targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame
-    end
-end
+local heartbeatConnection = nil
 
 TeleportToggle:OnChanged(function(value)
     if value then
@@ -1412,36 +1405,36 @@ TeleportToggle:OnChanged(function(value)
         end
         
         teleporting = true
-        teleportThread = task.spawn(function()
-            while teleporting do
-                teleportToPlayer(selectedPlayer)
-                task.wait(5) -- Ждем 5 секунд перед следующей телепортацией
+        heartbeatConnection = game:GetService("RunService").Heartbeat:Connect(function()
+            local targetPlayer = game:GetService("Players"):FindFirstChild(selectedPlayer)
+            if targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
+                if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame
+                end
             end
         end)
     else
         teleporting = false
-        if teleportThread then
-            task.cancel(teleportThread)
-            teleportThread = nil
+        if heartbeatConnection then
+            heartbeatConnection:Disconnect()
+            heartbeatConnection = nil
         end
     end
 end)
 
 -- Обновляем список игроков при подключении/отключении игроков
-game:GetService("Players").PlayerAdded:Connect(function(player)
-    table.insert(playerNames, player.Name)
-    PlayerDropdown:SetValues(playerNames)
-end)
-
-game:GetService("Players").PlayerRemoving:Connect(function(player)
-    for i, name in ipairs(playerNames) do
-        if name == player.Name then
-            table.remove(playerNames, i)
-            break
+local function updatePlayerList()
+    table.clear(playerNames)
+    for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
+        if player ~= game.Players.LocalPlayer then
+            table.insert(playerNames, player.Name)
         end
     end
     PlayerDropdown:SetValues(playerNames)
-end)
+end
+
+game:GetService("Players").PlayerAdded:Connect(updatePlayerList)
+game:GetService("Players").PlayerRemoving:Connect(updatePlayerList)
 
 ------/////////////////////////////////////////////////////////
     Tabs.Mstr:AddParagraph({
