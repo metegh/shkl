@@ -197,6 +197,8 @@ findAndModifyProximityPrompts()
 			Content = ""
 		})
 
+
+
         
 
 local Toggle = Tabs.Mjr:AddToggle("MyToggle", {Title = "Box Slap AutoFarm", Default = false })
@@ -1306,12 +1308,10 @@ Tabs.Main:AddButton({
 
 ---------------------------------------------------------------------- ////////////// MASTERY
 
-Tabs.Mstr:CreateParagraph("Aligned Paragraph", {
-    Title = "Glovel Mastery",
-    Content = "Glovel mastery functions a",
-    TitleAlignment = "Middle",
-    ContentAlignment = Enum.TextXAlignment.Center
-})
+		Tabs.Mstr:AddParagraph({
+			Title = "Slap Battles Game",
+			Content = ""
+		})
 
 local Toggle = Tabs.Mstr:CreateToggle("MyToggle", {Title = "Fast *DIG* quest", Default = false })
 
