@@ -1306,9 +1306,11 @@ Tabs.Main:AddButton({
 
 ---------------------------------------------------------------------- ////////////// MASTERY
 
-local Paragraph = Tabs.Main:CreateParagraph("Paragraph", {
+Tabs.Mstr:CreateParagraph("Aligned Paragraph", {
     Title = "Glovel Mastery",
-    Content = "Glovel Mastery functions"
+    Content = "Glovel mastery functions a",
+    TitleAlignment = "Middle",
+    ContentAlignment = Enum.TextXAlignment.Center
 })
 
 local Toggle = Tabs.Mstr:CreateToggle("MyToggle", {Title = "Fast *DIG* quest", Default = false })
@@ -1445,13 +1447,14 @@ Options.MyToggle:SetValue(false)
 							end
 						})
 
-						Tabs.Telp:AddButton({
-							Title = "Moai Island",
-							Description = "",
-							Callback = function()
-								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Arena.island4["Big Tree"].Bark.CFrame * CFrame.new(3. -4, 0)
-								end
-							})
+                      Tabs.Telp:AddButton({
+                        Title = "Moai Island",
+                      Description = "",
+                      Callback = function()
+                     -- Телепорт на остров Моаи (укажите нужные координаты)
+                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0, 0, 0) -- Замените на реальные координаты
+                             end
+                            })
 
 
 							
