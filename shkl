@@ -1415,7 +1415,7 @@ end)
 
 -- Создаем элементы интерфейса
 local Toggle = Tabs.Mstr:AddToggle("HitToggle", {
-    Title = "Auto-Critical Hit",
+    Title = "Auto Hit *semi-legit*",
     Default = false
 })
 
