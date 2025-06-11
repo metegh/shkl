@@ -1019,14 +1019,14 @@ end
 
 -- UI элементы (Fluent)
 local Dropdown = Tabs.Mstr:AddDropdown("TargetPlayerDropdown", {
-    Title = "Player for targetting",
+    Title = "Walk To Player",
     Values = getPlayerNames(),
     Multi = false,
     Default = 1,
 })
 
 local Toggle = Tabs.Mstr:AddToggle("AutoMoveToggle", {
-    Title = "Target Selected Player",
+    Title = "*WALK* Selected Player",
     Default = false,
 })
 
@@ -1352,7 +1352,7 @@ Options.MyToggle:SetValue(false)
 
 -- Создаем элементы интерфейса
 local Dropdown = Tabs.Mstr:AddDropdown("PlayerDropdown", {
-    Title = "Select Playere",
+    Title = "Select Player",
     Values = {},
     Multi = false,
     Default = nil
@@ -1389,31 +1389,34 @@ updatePlayerList()
 game:GetService("Players").PlayerAdded:Connect(updatePlayerList)
 game:GetService("Players").PlayerRemoving:Connect(updatePlayerList)
 
--- Общая функция для атаки
-local function attackPlayer(partName)
+-- Улучшенная функция атаки с проверкой нескольких частей
+local function attackPlayer(partNames)
     local selectedPlayer = Dropdown.Value
     if selectedPlayer then
         local player = game:GetService("Players"):FindFirstChild(selectedPlayer)
         if player and player.Character then
-            local part = player.Character:FindFirstChild(partName)
-            if part then
-                local args = {part, true}
-                game:GetService("ReplicatedStorage"):WaitForChild("GeneralHit"):FireServer(unpack(args))
-                return true
+            for _, partName in ipairs(partNames) do
+                local part = player.Character:FindFirstChild(partName)
+                if part then
+                    local args = {part, true}
+                    game:GetService("ReplicatedStorage"):WaitForChild("GeneralHit"):FireServer(unpack(args))
+                    return true -- Успешная атака
+                end
             end
         end
     end
-    return false
+    return false -- Ни один из частей не найден или не атакован
 end
 
--- Логика для атаки головы
+-- Логика для атаки головы (Head или UpperTorso)
 local headLoop
 HeadToggle:OnChanged(function(state)
     if state then
         headLoop = task.spawn(function()
             while HeadToggle.Value do
-                if not attackPlayer("Head") then
-                    warn("Не удалось атаковать голову!")
+                local success = attackPlayer({"Head", "UpperTorso"})
+                if not success then
+                    warn("Не удалось атаковать голову или верхнюю часть туловища!")
                 end
                 task.wait(0.5)
             end
@@ -1424,13 +1427,14 @@ HeadToggle:OnChanged(function(state)
     end
 end)
 
--- Логика для атаки туловища
+-- Логика для атаки туловища (Torso, UpperTorso, LowerTorso, HumanoidRootPart)
 local torsoLoop
 TorsoToggle:OnChanged(function(state)
     if state then
         torsoLoop = task.spawn(function()
             while TorsoToggle.Value do
-                if not attackPlayer("Torso") or not attackPlayer("UpperTorso") then
+                local success = attackPlayer({"Torso", "UpperTorso", "LowerTorso", "HumanoidRootPart"})
+                if not success then
                     warn("Не удалось атаковать туловище!")
                 end
                 task.wait(0.5)
@@ -1454,6 +1458,7 @@ TorsoToggle:OnChanged(function(state)
         HeadToggle:SetValue(false)
     end
 end)
+
 
 ------/////////////////////////////////////////////////////////
 
