@@ -1365,10 +1365,10 @@ end)
 
 Options.MyToggle:SetValue(false)
 
----////////////ROB MASTERY HELPER
+----------/////////////////////////////////// legit rob
 
 local RobToggle = Tabs.Mstr:AddToggle("AutoRobToggle", {
-    Title = "Auto Rob (Every 5s)",
+    Title = "Auto Rob (Every 16s)",
     Default = false
 })
 
@@ -1386,7 +1386,43 @@ RobToggle:OnChanged(function(value)
         robThread = task.spawn(function()
             while robbing do
                 robPlayer()
-                task.wait(5) -- Ждем 5 секунд перед следующим вызовом
+                task.wait(16) -- Ждем 5 секунд перед следующим вызовом
+            end
+        end)
+    else
+        robbing = false
+        if robThread then
+            task.cancel(robThread)
+            robThread = nil
+        end
+    end
+end)
+
+-- Дополнительно: вызываем сразу при включении, а не ждем 5 секунд
+Options.AutoRobToggle:SetValue(false)
+
+---////////////ROB MASTERY HELPER
+
+local RobToggle = Tabs.Mstr:AddToggle("AutoRobToggle", {
+    Title = "Auto Rob (Every 6s)",
+    Default = false
+})
+
+local robbing = false
+local robThread = nil
+
+local function robPlayer()
+    local args = {false}
+    game:GetService("ReplicatedStorage"):WaitForChild("rob"):FireServer(unpack(args))
+end
+
+RobToggle:OnChanged(function(value)
+    if value then
+        robbing = true
+        robThread = task.spawn(function()
+            while robbing do
+                robPlayer()
+                task.wait(6.5) -- Ждем 5 секунд перед следующим вызовом
             end
         end)
     else
@@ -1422,7 +1458,7 @@ end)
 
 -- Создаем переключатель для циклической телепортации
 local TeleportToggle = Tabs.Mstr:AddToggle("TeleportToggle", {
-    Title = "Teleport To Rob Player 8",
+    Title = "Teleport To Rob Player *every 8 second*",
     Default = false
 })
 
@@ -1488,6 +1524,30 @@ end
 updatePlayerList()
 game:GetService("Players").PlayerAdded:Connect(updatePlayerList)
 game:GetService("Players").PlayerRemoving:Connect(updatePlayerList)
+
+local AnchorToggle = Tabs.Mstr:AddToggle("AnchorToggle", {
+    Title = "Anchor Me!",
+    Default = false
+})
+
+AnchorToggle:OnChanged(function(value)
+    -- Получаем персонажа игрока
+    local character = game.Players.LocalPlayer.Character
+    if not character then return end
+    
+    -- Находим HumanoidRootPart
+    local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+    if not humanoidRootPart then return end
+    
+    -- Устанавливаем или снимаем Anchor
+    humanoidRootPart.Anchored = value
+    
+    -- Сообщение в консоль для отладки
+    print("Anchored:", humanoidRootPart.Anchored)
+end)
+
+-- Инициализация (убедимся, что изначально Anchored выключен)
+Options.AnchorToggle:SetValue(false)
 
 ------/////////////////////////////////////////////////////////
     Tabs.Mstr:AddParagraph({
