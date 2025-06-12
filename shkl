@@ -1368,7 +1368,7 @@ Options.MyToggle:SetValue(false)
 ----------/////////////////////////////////// legit rob
 
 local RobToggle = Tabs.Mstr:AddToggle("AutoRobToggle", {
-    Title = "Auto Rob (Every 16s)",
+    Title = "Auto Rob (Every 23s)",
     Default = false
 })
 
@@ -1386,7 +1386,7 @@ RobToggle:OnChanged(function(value)
         robThread = task.spawn(function()
             while robbing do
                 robPlayer()
-                task.wait(16) -- Ждем 5 секунд перед следующим вызовом
+                task.wait(23) -- Ждем 5 секунд перед следующим вызовом
             end
         end)
     else
